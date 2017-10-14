@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>AngularJS Skeleton</title>
+    <script src="d:\downloads\angular.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myController">
+        {{ text }}
+    </div>
+    <script>
+        angular.module('myApp', [])
+            .controller('myController', ['$scope', '$log', function ($scope, $log) {
+                $scope.text = "AngularJS it works!"
+                $log.info('hello from myController');
+            }])
+    </script>
+</body>
+</html>
