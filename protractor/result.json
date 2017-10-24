@@ -1,0 +1,11 @@
+[
+  {
+    "description": "Tes tab switching should interact with a new tab",
+    "assertions": [
+      {
+        "passed": true
+      }
+    ],
+    "duration": 14946
+  }
+]

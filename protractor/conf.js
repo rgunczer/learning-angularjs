@@ -11,5 +11,6 @@ exports.config = {
     framework: 'jasmine',
     jasmineNodeOpts: {
         defaultTimeoutInterval: 30000
-    }
+    },
+    resultJsonOutputFile: 'result.json',
 };

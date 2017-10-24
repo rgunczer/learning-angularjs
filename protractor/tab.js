@@ -19,6 +19,10 @@ describe('Tes tab switching', function() {
              browser.switchTo().window(handles[1]);
              browser.sleep(2000);
 
+            browser.refresh();
+
+            browser.sleep(2000);
+
              element(by.css('select')).click();
              element.all(by.css('option')).get(2).click();
 
