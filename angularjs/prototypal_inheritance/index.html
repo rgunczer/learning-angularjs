@@ -4,9 +4,10 @@
     <script src="d:\downloads\angular.js"></script>
 </head>
 <body ng-app="myApp">
+        <my-directive></my-directive>
     <div ng-controller="myController">
         {{text}}
-        <my-directive></my-directive>
+        
     </div>
     <script type="text/javascript">
         angular.module('myApp', [])
@@ -43,11 +44,12 @@
                 return {
                     restrict: 'E',
                     replace: true,
-                    scope: true, // prototypal inheritance
+                    //scope: true, // prototypal inheritance
                     //scope: { // isolated scope
                     //},
                     template: '<button>Some Text</button>',
                     controller: function($scope) {
+                        debugger;
                         $log.info("directive's controller " + $scope.$id);
                     },
                     link: function (scope, element, attrs) {
