@@ -23,6 +23,8 @@
             $log.info('inside myController: ' + $scope.$id);
             $scope.name = 'jancsi';
             $scope.getName = function() {
+                debugger;
+                $log.info('inside getName...');
                 return $scope.name + ' there';
             }
         })
@@ -38,6 +40,7 @@
                 replace: true,
                 template: '<div id="34">my directive {{ name }}</div>',
                 controller: function($log, $scope) {
+                    debugger;
                     $log.info('inside myDirective controller: ' + $scope.$id);
                     $log.info('name is: ' + $scope.name);
 
