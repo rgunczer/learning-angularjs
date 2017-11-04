@@ -7,9 +7,19 @@
             {{ text }}
             <br />
             Countries count: {{ countries.length }}
+            <br />
+            <input type="text" ng-model="name"/>
+            <br />
+            <button ng-click="submit()">Submit</button>
+            <br />
+            <my-loading urls="urlsToWatch"></my-loading>
         </div>
         <div ng-controller="myOtherController">
             {{ text }}
+            <br />
+            Colors count: {{ colors.length }}
+            <br />
+            <my-loading urls="urlsToWatch"></my-loading>
         </div>
         <script src="../angular.js"></script>
         <script src="script.js"></script>
