@@ -4,22 +4,25 @@
     </head>
     <body ng-app="myApp">
         <div ng-controller="myController">
-            {{ text }}
+            {{ ::text }}
             <br />
             Countries count: {{ countries.length }}
             <br />
             <input type="text" ng-model="name"/>
             <br />
-            <button ng-click="submit()">Submit</button>
+            <button ng-click="submit()">Load something else</button>
             <br />
-            <my-loading urls="urlsToWatch"></my-loading>
+            <my-loading urls="urlsToMonitor"></my-loading>
         </div>
+        <hr/>
         <div ng-controller="myOtherController">
-            {{ text }}
+            {{ ::text }}
             <br />
             Colors count: {{ colors.length }}
             <br />
-            <my-loading urls="urlsToWatch"></my-loading>
+            <my-loading urls="urlsToMonitor"></my-loading>
+            <br />
+            <button ng-click="submit()">Load something else again</button>
         </div>
         <script src="../angular.js"></script>
         <script src="script.js"></script>

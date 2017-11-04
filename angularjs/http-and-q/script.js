@@ -12,18 +12,20 @@ angular.module('myApp', [])
                 return x.url;
             });
             $log.info('pending requests: ' + urls);
-            $rootScope.$broadcast('$httpEvent', { urls: urls });
+            $rootScope.$broadcast('$httpEvent', { pendingUrls: urls });
         });
     }])
     .controller('myController', ['$scope', '$log', 'myData', function ($scope, $log, myData) {
         $scope.text = "If you can read this then AngularJS is working fine";
         $log.info('hello from myController');
-        $scope.urlsToWatch = ['data/countries.json', 'data/colors.json'];
+        //$scope.urlsToMonitor = ['data/countries.json', 'data/colors.json'];
+        $scope.urlsToMonitor = [ myData.getUrlCountries(), myData.getUrlColors() ];
         $scope.submit = function() {
             // myData.load()
             // .then(function(result) {
             //     $log.info('submit then: ' + result);
             // });
+            $log.info('submit in: [' + $scope.$id + ']');
             myData.loadSomethingOther();
         };
 
@@ -43,7 +45,11 @@ angular.module('myApp', [])
     .controller('myOtherController', ['$scope', '$log', 'myData', function ($scope, $log, myData) {
         $scope.text = "Hello from myOtherController If you can read this then AngularJS is working fine";
         $log.info('hello from myOtherController');
-        $scope.urlsToWatch = ['*'];
+        $scope.urlsToMonitor = ['*'];
+        $scope.submit = function() {
+            $log.info('here again: [' + $scope.$id + ']');
+            $scope.countries.pop();
+        };
         myData.load()
             .then(function(result) {
                 $log.info('all data is received in myOtherController');
@@ -60,50 +66,37 @@ angular.module('myApp', [])
             scope: {
                 urls: '='
             },
-            template: '<div>loading status: {{loading}}</div>',
+            template: '<div>loading status:<span ng-show="loading">loading</span></div>',
             controller: ['$scope', '$http', '$log', function($scope, $http, $log) {
                 $scope.loading = false;
+                var isMonitorAll = ($scope.urls.length === 1 && $scope.urls[0] === '*');
 
-                $scope.$on('$httpEvent', function(event, data) {
-                    $log.info('Got httpEvent in: ' + $scope.$id);
-                    if ($scope.urls.length === 1 && $scope.urls[0] === '*') {
-                        $scope.loading = data.urls.length > 0;
-                    } else {
-                        var pendingCount = 0;
-                        for(var i = 0; i < data.urls.length; ++i) {
-                            for(var j = 0; j < $scope.urls.length; ++j) {
-                                if (data.urls[i].indexOf($scope.urls[j]) !== -1) {
-                                    ++pendingCount;
-                                }
+                function checkAll(pending) {
+                    $log.info('check all');
+                    return pending.length > 0;
+                }
+
+                function checkSpecific(pending, monitored) {
+                    $log.info('pending:' + angular.toJson(pending));
+                    $log.info('monitor: ' + angular.toJson(monitored));
+                    for(var i = 0; i < pending.length; ++i) {
+                        for(var j = 0; j < monitored.length; ++j) {
+                            if (pending[i].indexOf(monitored[j]) !== -1) {
+                                return true;
                             }
                         }
+                    }
+                    return false;
+                }
 
-                        $log.info('urls: ' + $scope.urls);
-                        $scope.loading = pendingCount > 0;
+                $scope.$on('$httpEvent', function(event, data) {
+                    $log.info('Got httpEvent in [scope:' + $scope.$id + ']');
+                    if (isMonitorAll) {
+                        $scope.loading = checkAll(data.pendingUrls);
+                    } else {
+                        $scope.loading = checkSpecific(data.pendingUrls, $scope.urls);
                     }
                 });
-
-                // $scope.$watch(function () {
-                //     $log.info('WATCHER>>>>>>>>>>>>>>>>>>>>>');
-                //     var pendingCount = 0;
-                //     for(var i = 0; i < $http.pendingRequests.length; ++i) {
-                //         for(var j = 0; j < $scope.urls.length; ++j) {
-                //             if ($http.pendingRequests[i].url.indexOf($scope.urls[j]) !== -1) {
-                //                 ++pendingCount;
-                //             }
-                //         }
-                //     }
-                //     $log.info('urls: ' + $scope.urls);
-                //     //return $http.pendingRequests.length > 0;
-                //     return pendingCount;
-                // }, function(hasPending) {
-                //     if (hasPending) {
-                //         $scope.loading = true;
-                //     } else {
-                //         $scope.loading = false;
-                //     }
-                // });
-
             }]
         }
     }])
