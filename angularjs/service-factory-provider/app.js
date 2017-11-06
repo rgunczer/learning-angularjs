@@ -8,7 +8,7 @@ angular.module('myApp', [])
                 break;
 
             case 'HZD':
-                myProviderProvider.setup(['Aloy','Rost']);
+                myProviderProvider.setup(['Aloy', 'Rost']);
                 break;
         }
         console.log('configure block...');
