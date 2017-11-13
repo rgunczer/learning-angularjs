@@ -10,14 +10,11 @@ angular.module('myApp', [])
             age: 56
         };
 
-
         //backtick Alt + 96 = `
-
 
         // define hidden or non enumerable property on JS object
         Object.defineProperty(source, 'income', { value: 349, enumerable: false });
 
-        
 
         $log.info("Joel's income:" + source.income);
 
