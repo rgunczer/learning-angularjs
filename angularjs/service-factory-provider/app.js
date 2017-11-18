@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('myApp', [])
-    .config(function(myProviderProvider, myConstant) { // config block, only provider and constant available
+    .config(function(myProviderProvider, myConstant, myOtherProvider) { // config block, only provider and constant available
+        //myOtherProvider.options.name = 'Luigi';
         switch(myConstant.gameName) {
             case 'LastOfUs':
                 myProviderProvider.setup(['Joel', 'Ellie']);
@@ -16,8 +17,8 @@ angular.module('myApp', [])
     .run(function($log) { // run block everything is available
         $log.info('run block...');
     })
-    .controller('myController', ['$log', '$scope', 'myService', 'myFactory', 'myProvider', 'myConstant', 'myValue', 
-    function ($log, $scope, myService, myFactory, myProvider, myConstant, myValue) {
+    .controller('myController', ['$log', '$scope', 'myService', 'myFactory', 'myProvider', 'myConstant', 'myValue', 'myOther',
+    function ($log, $scope, myService, myFactory, myProvider, myConstant, myValue, myOther) {
         $scope.text = "If you can read this then AngularJS is working fine";
         $log.info('myController');
 
@@ -26,6 +27,8 @@ angular.module('myApp', [])
         $log.info('myProvider is: ' + angular.toJson(myProvider, true));
         $log.info('myService is: ' + myService.getName());
         $log.info('myFactory is: ' + myFactory.getName());
+
+        $log.info('myOther is: ' + myOther.name);
     }])
     .service('myService', ['$log', function($log) {
         $log.info('myService...');
@@ -56,3 +59,17 @@ angular.module('myApp', [])
     .constant('myConstant', { gameName: 'HZD' })
     //.value('myValue', 'some value')
     .value('myValue', { number: 43, name: 'Ellie' })
+
+    .provider('myOther', function() {
+        var myOtherProvider = {
+            options: {
+                name: 'mario'
+            },
+            $get: function() {
+                return {
+                    name: myOtherProvider.options.name
+                };
+            }
+        };
+        return myOtherProvider;
+    })
