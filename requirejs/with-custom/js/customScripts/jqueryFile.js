@@ -1,4 +1,4 @@
-alert('sff');
+alert('from jqueryFile...');
 
 // define(['', '', '', ''], function() {
 
