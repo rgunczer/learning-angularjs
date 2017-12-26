@@ -7,3 +7,5 @@ angularjs/node_modules/
 jasmine/lib/
 requirejs/require.js
 requirejs/lib/
+node_modules
+angular/
