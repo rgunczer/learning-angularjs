@@ -35,10 +35,10 @@ angular.module('myApp', [])
             data: '=',
             visit: '&'
         },
-        link: function($scope) {
-            $scope.onVisit = function(id) {
+        link: function(scope, element, attrs) {
+            scope.onVisit = function(id) {
                 alert('child onVisit id: ' + id);
-                $scope.visit({id: id});
+                scope.visit({id: id});
             }
         }
     }
