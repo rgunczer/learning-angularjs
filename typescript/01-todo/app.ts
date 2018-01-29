@@ -27,7 +27,6 @@ function templateStrings() {
 
     var displayName = `Todo #${todo.id}`;
 
-
     container.innerHTML = `
     <div todo='${todo.id}' class="list-group-item}">
         <i class="${ todo.completed ? "" : "hidden" } text-success glyphicon glyphicon-ok"></i>

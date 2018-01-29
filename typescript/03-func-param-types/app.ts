@@ -22,3 +22,6 @@ function totalLength(x: (string | any[]), y: (any[] | string)) : number {
     
     return total;
 }
+
+
+totalLength()
