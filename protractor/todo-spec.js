@@ -1,7 +1,12 @@
 describe('angularjs homepage todo list', function() {
-    it('should add a todo', function() {
-        browser.get('https://angularjs.org');
 
+    
+    beforeEach(function() {
+        browser.get('https://angularjs.org');   
+        browser.sleep(3000);
+    });
+
+    it('should add a todo', function() {
         element(by.model('todoList.todoText')).sendKeys('write first protractor test');
         element(by.css('[value="add"')).click();
 
@@ -19,4 +24,22 @@ describe('angularjs homepage todo list', function() {
 
         browser.sleep(1000);
     });
+
+    it('should enter the text', function() {
+        element(by.model('yourName')).sendKeys('jancsi');
+
+        var text = element(by.binding('yourName')).getText();
+
+        text.then(function(t) {
+            console.log('the text is: ' , t);
+        });
+
+        browser.debugger();
+
+        expect(text).toEqual('Hello jancsi!');
+
+        browser.sleep(1000);
+
+    });
+
 });

@@ -1,7 +1,9 @@
 exports.config = {
-    directConnect: true,
+    directConnect: false,
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['tab.js'],
+    //specs: ['tab.js'],
+    //specs: ['todo-spec.js'],
+    specs: ['todo-spec.js', 'tab.js'],
     capabilities: {
         //browserName: 'internet explorer',
         //platform: 'ANY',

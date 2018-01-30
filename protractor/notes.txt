@@ -1,0 +1,7 @@
+commands:
+
+run with: protractor conf.js
+
+webdriver-manager start --standalone
+
+webdriver-manager update

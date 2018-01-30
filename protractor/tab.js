@@ -1,5 +1,5 @@
 
-describe('Tes tab switching', function() {
+describe('Test tab switching', function() {
 
     it('should interact with a new tab', function() {
         
