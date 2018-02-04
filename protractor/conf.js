@@ -5,10 +5,12 @@ exports.config = {
     //specs: ['todo-spec.js'],
     specs: ['todo-spec.js', 'tab.js'],
     capabilities: {
+        browserName: 'chrome'
         //browserName: 'internet explorer',
         //platform: 'ANY',
         //version: '11'
-        browserName: 'chrome'
+        //requireWindowFocus: true
+        //browserName: 'chrome'
     },
     framework: 'jasmine',
     jasmineNodeOpts: {
