@@ -12,3 +12,4 @@ angular/
 requirejs/with-angularjs-mod/lib/
 protractor/result.json
 karma/lib/
+karma/coverage/

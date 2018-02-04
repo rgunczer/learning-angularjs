@@ -1,0 +1,23 @@
+{
+  "name": "karma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "karma.conf.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "angular": "^1.5.11",
+    "angular-mocks": "^1.5.11",
+    "angular-route": "^1.5.11",
+    "jasmine-core": "^2.9.1",
+    "requirejs": "^2.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
