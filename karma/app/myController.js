@@ -4,7 +4,7 @@ angular.module('myApp')
         $scope.sampleArray = [1,2,3];
         
         $scope.brokeOnIe11 = function() {
-            var array = [1, 2, 3];
+            //var array = [1, 2, 3];
             // array.find(function(item) {
             //     return item === 2;
             // });

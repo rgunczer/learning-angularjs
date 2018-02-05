@@ -1,5 +1,5 @@
 
-describe('myService tests', function() {
+describe('test myService', function() {
     var myService, $httpBackend, $rootScope;
 
     beforeEach(function() {
@@ -37,8 +37,6 @@ describe('myService tests', function() {
         $httpBackend.flush();
         $rootScope.$digest();
         
-        dump(names);
-
         expect(names).toEqual([{id:1, name:'Joel', uuid: prefix},{id:2, name:'Ellie', uuid:prefix}]);
     });
 

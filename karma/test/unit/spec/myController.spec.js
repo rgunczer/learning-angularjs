@@ -1,5 +1,5 @@
 
-describe('test last of us names', function() {
+describe('test myController', function() {
     var scope, myController;
     var $rootScope;
 
@@ -19,8 +19,6 @@ describe('test last of us names', function() {
     });
 
     it('should be Joel', function() {
-        dump(scope.$id);
-
         expect(scope.name).toEqual('Andy');
     });
 
@@ -33,9 +31,4 @@ describe('test last of us names', function() {
         
         expect(resultArray).toEqual([1, 2]);
     });
-
-    it('should', function() {
-
-    });
-
 });

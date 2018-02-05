@@ -20,6 +20,7 @@ module.exports = function(config) {
       'app/app.js',
       'app/myController.js',
       'app/myService.js',
+      'app/myDirective.js',
       'test/unit/spec/*.spec.js'
     ],
 
