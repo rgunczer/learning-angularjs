@@ -16,6 +16,8 @@ describe('myDirective test', function() {
     });
  
     it('should contain name', function() {
+        debugger;
+        
         expect(element.html()).toContain('name');
     });
 

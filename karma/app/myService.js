@@ -1,5 +1,6 @@
 angular.module('myApp')
     .service('myService', function($http) {
+        console.log('hi there');
         this.name = 'Joe';
         this.getName = function() {
             return 'Jack';

@@ -1,11 +1,12 @@
 module.exports = {
     "env": {
         "browser": true,
-        "jasmine": true
+        "jasmine": true,
+        "amd": true
     },
-    "plugins": ['angular', 'jasmine'],
+    "plugins": ['jasmine', 'angular'],
     "extends": [
-        "eslint:recommended", 
+        "eslint:recommended",
         "plugin:jasmine/recommended"
     ],
     "rules": {
@@ -21,17 +22,13 @@ module.exports = {
             "error",
             "single"
         ],
-        // "semi": 0,
         "semi": [
             "error",
             "always"
-        ],
-        //"no-console": 0
+        ]
     },
     "globals": {
-        "angular": false,
-        "inject": false,
-        "module": false,
-        "dump": false
+        'module': false,
+        'inject': false
     }
 };

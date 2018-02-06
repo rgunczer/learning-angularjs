@@ -15,7 +15,7 @@ angular.module('myApp')
                 $scope.clickMe = function() {
                     console.log('inside click Me');
                     $scope.name = 'BigDaddy';
-                }
+                };
             }
         };
     });
