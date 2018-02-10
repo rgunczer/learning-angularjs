@@ -14,3 +14,7 @@ protractor/result.json
 karma/lib/
 karma/coverage/
 karma/junit/
+karma-requirejs-angularjs/junit/
+karma-requirejs-angularjs/coverage/Chrome 64.0.3282 (Windows 10.0.0)/app/myService.js.html
+karma-requirejs-angularjs/coverage/
+karma-requirejs-angularjs/lib/
