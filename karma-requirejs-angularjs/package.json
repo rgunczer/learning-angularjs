@@ -1,5 +1,5 @@
 {
-  "name": "karma",
+  "name": "angularjs_requirejs_karma_test",
   "version": "1.0.0",
   "description": "",
   "main": "karma.conf.js",
@@ -15,10 +15,17 @@
     "requirejs": "^2.3.5"
   },
   "devDependencies": {
-    "karma-junit-reporter": "^1.2.0"
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-junit-reporter": "^1.2.0",
+    "karma-requirejs": "^1.1.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "karma": "node_modules\\.bin\\karma start"
   },
   "author": "",
   "license": "ISC"
