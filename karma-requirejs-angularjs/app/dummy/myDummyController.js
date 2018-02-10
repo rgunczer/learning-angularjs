@@ -5,6 +5,9 @@ define(function() {
         $scope.sayDummy = function() {
             $log.info('Dummy Here');
         };
+        $scope.calculate = function () { 
+            return 'stuff';
+        };
     };
 
 });

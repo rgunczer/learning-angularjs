@@ -2,7 +2,7 @@
 
 define(['testApp'], function() {
 
-    describe('test myController', function() {
+    describe('test myDummyController', function() {
         var scope, myController;
         var $rootScope;
 
@@ -17,9 +17,15 @@ define(['testApp'], function() {
             });
         });
 
-        it('should', function() {
+        it('should dummyStuff be "dummy"', function() {
             expect(myController).toBeDefined();
             expect(scope.dummyStuff).toBe('dummy'); 
+        });
+        
+        it('call to "calculate" return "stuff"', function() {
+            var result = scope.calculate();
+
+            expect(result).toBe('stuff');
         });
             
 
