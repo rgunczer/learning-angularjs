@@ -12,6 +12,7 @@
     "angular-mocks": "^1.5.11",
     "angular-route": "^1.5.11",
     "jasmine-core": "^2.9.1",
+    "ng-stats": "^2.5.4",
     "requirejs": "^2.3.5"
   },
   "devDependencies": {

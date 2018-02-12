@@ -13,15 +13,15 @@ define(['testApp'], function() {
                 myService = $injector.get('myService');
             });
         });
-        
+
         it('should be defined', function() {
             expect(myService).toBeDefined();
         });
-        
+
         it('should check the name property', function() {
             expect(myService.name).toEqual('Joe');
         });
-        
+
         it('should check the getName function', function() {
             expect(myService.getName()).toEqual('Jack');
         });
@@ -30,27 +30,26 @@ define(['testApp'], function() {
             var prefix = 'TLOU';
             var data = [{id:1, name:'Joel'},{id:2, name:'Ellie'}];
             $httpBackend.expectGET('api/get/names.json').respond(data);
-            
+
             var names;
             myService.getNames(prefix)
                 .then(function(data) {
                     names = data;
                 });
-            
+
             $httpBackend.flush();
             $rootScope.$digest();
-            
+
             expect(names).toEqual([{id:1, name:'Joel', uuid: prefix},{id:2, name:'Ellie', uuid:prefix}]);
         });
-        
+
         it('should calculate the sum', function() {
             var result = myService.calculateSum(1,2);
-            
+
             expect(result).toBe(3);
         });
-            
+
 
     });
 
 });
-        
