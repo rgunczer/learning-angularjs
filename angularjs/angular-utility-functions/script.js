@@ -1,6 +1,7 @@
 angular.module('myApp', [])
+
     .controller('myController', function($scope, $log) {
-        $scope.text = "If you can read this then AngularJS is working fine";
+        $scope.text = 'If you can read this then AngularJS is working fine';
         $log.info('hello from myController');
 
         // Creates a deep copy of source, which should be an object or an array.
@@ -16,12 +17,10 @@ angular.module('myApp', [])
         Object.defineProperty(source, 'income', { value: 349, enumerable: false });
 
 
-        $log.info("Joel's income:" + source.income);
+        $log.info('Joel\'s income:' + source.income);
 
         $log.info('source: ' + angular.toJson(source, true));
         var destination = angular.copy(source);
         $log.info('destination: ' + angular.toJson(destination, true));
 
-
-
-    })
+    });
