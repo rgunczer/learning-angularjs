@@ -3,5 +3,8 @@
         <h1>My AppZ</h1>
         <p class="description">Keeping track for the media I want to watch</p>
     </header>
-    <mw-media-item></mw-media-item>
+    <mw-media-item
+        [mediaItem]="firstMediaItem"
+        (delete)="onMediaItemDelete($event)"></mw-media-item>
+    <!-- <mw-media-item [mediaItemToWatch]="firstMediaItem"></mw-media-item> -->
 </section>
