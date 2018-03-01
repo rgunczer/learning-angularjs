@@ -1,6 +1,6 @@
 angular.module('App', [])
 
-    .controller('myController', function ($scope, $log) {
+    .controller('myController', function ($scope) {
         $scope.text = 'myController';
         $scope.$on('talkToParent', function(event, args) {
             alert(event.name + ' ' + JSON.stringify(args));
@@ -10,7 +10,7 @@ angular.module('App', [])
         };
     })
 
-    .controller('myOtherController', function($scope, $log) {
+    .controller('myOtherController', function($scope) {
         $scope.text = 'myOtherController';
         $scope.onEmit = function () {
             $scope.$emit('talkToParent', { msg: 'myMessage' });
