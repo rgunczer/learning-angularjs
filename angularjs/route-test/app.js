@@ -15,7 +15,7 @@ angular.module('App', ['ngRoute'])
                 title: 'root',
                 template: '<h1>root</h1>',
                 resolve: {
-                    check: function($timeout, $log, myAuth, $location) {
+                    check: function($timeout, $log, myAuth, $location) { // eslint-disable-line no-unused-vars
                         return $timeout(function() {
                             $log.info('root resolved');
                             //myAuth.checkAccess();
