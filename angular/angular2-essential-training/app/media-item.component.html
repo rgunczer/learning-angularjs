@@ -9,9 +9,9 @@
 <!-- <div>Watched on {{ mediaItem.watchedOn }}</div> -->
 <!-- <div>Action</div> -->
 <!-- <div *ngIf="mediaItem.watchedOn">Watched on {{ mediaItem.watchedOn }}</div> -->
-<template [ngIf]="mediaItem.watchedOn">
+<ng-template [ngIf]="mediaItem.watchedOn">
     <div>Watched on {{ mediaItem.watchedOn | date: 'shortDate' }}</div>
-</template>
+</ng-template>
 
 <div>{{ mediaItem.category }}</div>
 <div>{{ mediaItem.year }}</div>

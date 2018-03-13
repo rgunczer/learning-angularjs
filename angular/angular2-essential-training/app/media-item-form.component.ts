@@ -32,8 +32,12 @@ export class MediaItemFormComponent {
             return null;
         } else {
             return {
-                'year': true
-            }
+                //'year': true
+                'year': {
+                    'min': minYear,
+                    'max': maxYear
+                }
+            };
         }
     }
 

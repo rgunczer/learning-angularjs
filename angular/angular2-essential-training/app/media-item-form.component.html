@@ -19,6 +19,9 @@
             <label for="name">Name</label>
             <!-- <input type="text" name="name" id="name" ngModel> -->
             <input type="text" name="name" id="name" formControlName="name">
+            <div *ngIf="form.get('name').hasError('pattern')" class="error">
+                name has invalid characters
+            </div>
         </li>
         <li>
             <label for="category">Name</label>
@@ -34,8 +37,10 @@
         </li>
         <li>
             <label for="year">Year</label>
-            <!-- <input type="text" name="year" id="year" maxlength="4" ngModel> -->
             <input type="text" name="year" id="year" maxlength="4" formControlName="year">
+            <div *ngIf="form.get('year').errors as boo" class="error">
+                year is invalid must be between {{ boo.year.min }} and {{ boo.year.max }}
+            </div>
         </li>
     </ul>
     <button type="submit" [disabled]="!form.valid">Save</button>
