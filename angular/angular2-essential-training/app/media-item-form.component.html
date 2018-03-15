@@ -11,8 +11,9 @@
             <label for="medium"></label>
             <!-- <select name="medium" id="medium" ngModel> -->
             <select name="medium" id="medium" formControlName="medium">
-                <option value="Movies">Movies</option>
-                <option value="Series">Series</option>
+                <option *ngFor="let medium of lookupLists.mediums" value="{{medium}}">{{medium}}</option>
+                <!-- <option value="Movies">Movies</option> -->
+                <!-- <option value="Series">Series</option> -->
             </select>
         </li>
         <li>
