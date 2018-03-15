@@ -9,7 +9,10 @@
         'app': 'app', // 'dist',
 
         '@angular': 'node_modules/@angular',
-        'rxjs': 'node_modules/rxjs'
+        '@angular/common/http': 'node_modules/@angular/common/bundles/common-http.umd.js',
+        'tslib': 'node_modules/tslib/tslib.js',
+        'rxjs': 'node_modules/rxjs',
+        'rxjs/operators': 'node_modules/rxjs/operators/index'
     };
 
     // packages tells the System loader how to load when no filename and/or no extension
