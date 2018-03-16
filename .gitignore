@@ -19,3 +19,6 @@ karma-requirejs-angularjs/coverage/
 karma-requirejs-angularjs/lib/
 angularjs/angular-route.js
 angular/angular2-essential-training/media/
+angular/Learning Angular LiveLessons/**/*.js
+*.png
+*.map
