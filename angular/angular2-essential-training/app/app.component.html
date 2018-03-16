@@ -1,3 +1,14 @@
+<nav>
+    <a routerLink="/">
+        <img src="media/04.png" class="icon">
+    </a>
+    <a routerLink="/Movies">
+        <img src="media/03.png" class="icon">
+    </a>
+    <a routerLink="/Series">
+        <img src="media/02.png" class="icon">
+    </a>
+</nav>
 <section>
     <header>
         <h1>My AppZ</h1>
@@ -7,6 +18,7 @@
         [mediaItem]="firstMediaItem"
         (delete)="onMediaItemDelete($event)"></mw-media-item> -->
     <!-- <mw-media-item [mediaItemToWatch]="firstMediaItem"></mw-media-item> -->
-    <mw-media-item-form></mw-media-item-form>
-    <mw-media-item-list></mw-media-item-list>
+    <!-- <mw-media-item-form></mw-media-item-form>
+    <mw-media-item-list></mw-media-item-list> -->
+    <router-outlet></router-outlet>
 </section>

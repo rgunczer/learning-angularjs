@@ -9,26 +9,35 @@ export class MediaItemService {
 
     }
 
-    get() {
+    get(medium) {
+        let getOptions = {
+            params: {
+                //medium: medium;
+                medium // es6 short syntax
+            }
+        };
         //return this.mediaItems;
-        return this.http.get<MediaItemsResponse> ('mediaitems').pipe(
-            map((response: MediaItemsResponse) => {
-                return response.mediaItems;
-            })
-        );
+        return this.http.get<MediaItemsResponse> ('mediaitems', getOptions)
+            .pipe(
+                map((response: MediaItemsResponse) => {
+                    return response.mediaItems;
+                })
+            );
     }
 
     add(mediaItem) {
-        this.mediaItems.push(mediaItem);
+        //this.mediaItems.push(mediaItem);
+        return this.http.post('mediaitems', mediaItem);
     }
 
     delete(mediaItem) {
-        let index = this.mediaItems.indexOf(mediaItem)
-        if (index !== -1) {
-            this.mediaItems.splice(index, 1);
-        }
+        // let index = this.mediaItems.indexOf(mediaItem)
+        // if (index !== -1) {
+        //     this.mediaItems.splice(index, 1);
+        // }
+        return this.http.delete(`mediaitems/${mediaItem.id}`);
     }
-
+/*
     mediaItems = [
         {
           id: 1,
@@ -72,6 +81,7 @@ export class MediaItemService {
           isFavorite: false
         }
     ];
+*/
 }
 
 interface MediaItem {
