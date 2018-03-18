@@ -1,0 +1,13 @@
+﻿<div>
+<!--    <h1>{{'Page Header: ' + pageHeader}}{{ 10 + 20 + 30 }}</h1>-->
+    <h1>{{ pageHeader ? pageHeader : 'No Header!' }}</h1>
+    <img [src]="imageSrc"/>
+    <img src="https://s3.amazonaws.com/{{imagePath}}"/>
+    <div>{{getFullName()}}</div>
+    <my-employee></my-employee>
+    <button [disabled]="isDisabled">Click Me</button>
+    <span [innerHtml]="pageHeader"></span>
+    <span bind-innerHtml="pageHeader"></span> <!-- canonical --> 
+    <div>{{badHtml}}</div>
+    <div [innerHtml]="badHtml"></div>
+</div>

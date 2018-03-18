@@ -22,7 +22,7 @@ angular/angular2-essential-training/media/
 angular/Learning Angular LiveLessons/**/*.js
 *.png
 *.map
-angular/kudv_angular/03-setup_angular_in_visual_studio/.vs/
-angular/kudv_angular/03-setup_angular_in_visual_studio/Angular2Demo/bin/
-angular/kudv_angular/03-setup_angular_in_visual_studio/Angular2Demo/obj/
-angular/kudv_angular/03-setup_angular_in_visual_studio/packages/
+bin/
+obj/
+.vs/
+packages/
