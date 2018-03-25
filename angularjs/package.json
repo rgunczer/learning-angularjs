@@ -1,0 +1,22 @@
+{
+  "name": "angularjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "angular": "^1.5.11",
+    "jasmine": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/angular": "^1.5.11",
+    "@types/angular-mocks": "^1.5.11",
+    "@types/jasmine": "^2.8.6",
+    "@types/jquery": "^3.3.1",
+    "@types/protractor": "^4.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
