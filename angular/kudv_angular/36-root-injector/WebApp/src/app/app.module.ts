@@ -12,6 +12,8 @@ import { SimpleComponent } from './others/simple.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './others/pageNotFound.component';
 import { EmployeeService } from './employee/employee.service';
+import { UserPreferencesService } from './employee/userPreferences.service';
+import { TestModule } from './test.module';
 
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -23,7 +25,13 @@ const appRoutes: Routes = [
 
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(appRoutes, { useHash: true })],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        TestModule,
+        RouterModule.forRoot(appRoutes, { useHash: true })
+    ],
     declarations: [
         AppComponent,
         EmployeeComponent,
