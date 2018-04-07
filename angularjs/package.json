@@ -8,14 +8,14 @@
     "jasmine": "^2.8.0"
   },
   "devDependencies": {
-    "@types/angular": "^1.5.11",
-    "@types/angular-mocks": "^1.5.11",
+    "@types/angularjs": "^1.5.14-alpha",
     "@types/jasmine": "^2.8.6",
     "@types/jquery": "^3.3.1",
     "@types/protractor": "^4.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "boo": "echo \"eg\""
   },
   "author": "",
   "license": "ISC"

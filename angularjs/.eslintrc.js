@@ -11,6 +11,8 @@ module.exports = {
         "angular/controller-name": 0,
         "angular/file-name": 0,
         "angular/controller-as": 0,
+        "angular/no-service-method": 0,
+        "angular/no-run-logic": 0,
         "indent": [
             "error",
             4
