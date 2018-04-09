@@ -1,3 +1,4 @@
+// @ts-check
 'use strict';
 
 angular.module('myApp', [])
@@ -6,17 +7,18 @@ angular.module('myApp', [])
             var pending = $http.pendingRequests.length > 0;
             $log.info('WATCHER >>>>>>>>>>>>>>>>>>>>> pending count: ' + $http.pendingRequests.length);
             return pending;
-        }, function(newValue, oldValue) {
+        }, function() {
             $log.info('BROADCASTING');
             var urls = $http.pendingRequests.map(function(x) {
                 return x.url;
             });
             $log.info('pending requests: ' + urls);
+            $log.info('pending requests: ' + urls);
             $rootScope.$broadcast('$httpEvent', { pendingUrls: urls });
         });
     }])
     .controller('myController', ['$scope', '$log', 'myData', function ($scope, $log, myData) {
-        $scope.text = "If you can read this then AngularJS is working fine";
+        $scope.text = 'If you can read this then AngularJS is working fine';
         $log.info('hello from myController');
         //$scope.urlsToMonitor = ['data/countries.json', 'data/colors.json'];
         $scope.urlsToMonitor = [ myData.getUrlCountries(), myData.getUrlColors() ];
@@ -30,7 +32,7 @@ angular.module('myApp', [])
         };
 
         myData.load()
-            .then(function (result) {
+            .then(function () {
                 $log.info('all data is received in myController');
             }, function (error) {
                 $log.info('error loading data in myController ' + angular.toJson(error));
@@ -43,7 +45,7 @@ angular.module('myApp', [])
         $log.info('colors count: ' + $scope.colors.length);
     }])
     .controller('myOtherController', ['$scope', '$log', 'myData', function ($scope, $log, myData) {
-        $scope.text = "Hello from myOtherController If you can read this then AngularJS is working fine";
+        $scope.text = 'Hello from myOtherController If you can read this then AngularJS is working fine';
         $log.info('hello from myOtherController');
         $scope.urlsToMonitor = ['*'];
         $scope.submit = function() {
@@ -51,7 +53,7 @@ angular.module('myApp', [])
             $scope.countries.pop();
         };
         myData.load()
-            .then(function(result) {
+            .then(function() {
                 $log.info('all data is received in myOtherController');
             }, function (error) {
                 $log.info('error loading data in myOtherController ' + angular.toJson(error));
@@ -98,7 +100,7 @@ angular.module('myApp', [])
                     }
                 });
             }]
-        }
+        };
     }])
     .service('myData', ['$http', '$log', '$q', function ($http, $log, $q) {
         $log.info('myData Service instantiated...');
@@ -111,7 +113,7 @@ angular.module('myApp', [])
 
         this.getUrlColors = function() {
             return 'http://127.0.0.1:8080/data/colors.json';
-        }
+        };
 
         var countriesPromise;
         var colorsPromise;
@@ -165,7 +167,7 @@ angular.module('myApp', [])
 
         this.loadSomethingOther = function() {
             $http.get('http://127.0.0.1:8080/data/colors1.json');
-        }
+        };
 
     }]);
 
