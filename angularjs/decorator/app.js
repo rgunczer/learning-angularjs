@@ -2,16 +2,26 @@ angular.module('App', [])
 
     .constant('apiUrl', 'http://127.0.0.1:8080')
 
-    .config(function($provide, apiUrl) {
+    .config(function($provide, apiUrl, $logProvider) {
+
+        $logProvider.debugEnabled(false);
 
         console.log('apiUrl: ' + apiUrl);
 
         $provide.decorator('$log', function ($delegate) {
+
+            // patch
             var originalWarn = $delegate.warn;
             $delegate.warn = function(msg) {
                 msg = 'Decorated Warn: ' + msg;
                 originalWarn.apply($delegate, arguments);
             }
+
+            // augment
+            $delegate.simple = function(msg) {
+                $delegate.info('>>> ' + msg);
+            };
+
             return $delegate;
         });
 
@@ -33,11 +43,14 @@ angular.module('App', [])
         $scope.text = 'If you can read this then AngularJS is working fine';
         $log.info('hello from myController');
         $log.warn('hello warn');
+        $log.simple('here');
+
 
         //$http.get('../data/colors.json')
         $http.get('colors.json')
             .then(function(response) {
                 $log.info(angular.toJson(response.data, true));
+                $log.debug('here is a debug message');
             })
     });
 
