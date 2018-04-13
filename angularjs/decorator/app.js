@@ -12,10 +12,10 @@ angular.module('App', [])
 
             // patch
             var originalWarn = $delegate.warn;
-            $delegate.warn = function(msg) {
+            $delegate.warn = function(msg) { // eslint-disable-line no-unused-vars
                 msg = 'Decorated Warn: ' + msg;
                 originalWarn.apply($delegate, arguments);
-            }
+            };
 
             // augment
             $delegate.simple = function(msg) {
@@ -33,7 +33,7 @@ angular.module('App', [])
                 args[0] = apiUrl + '/data/' + args[0];
 
                 return originalFn.apply(null, args);
-            }
+            };
             return $delegate;
         });
 
@@ -51,6 +51,6 @@ angular.module('App', [])
             .then(function(response) {
                 $log.info(angular.toJson(response.data, true));
                 $log.debug('here is a debug message');
-            })
+            });
     });
 

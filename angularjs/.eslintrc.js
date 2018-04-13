@@ -8,6 +8,7 @@ module.exports = {
         "plugin:angular/johnpapa"
     ],
     "rules": {
+        "no-console": 0,
         "angular/controller-name": 0,
         "angular/file-name": 0,
         "angular/controller-as": 0,
