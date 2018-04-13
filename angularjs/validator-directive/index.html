@@ -2,6 +2,7 @@
     <head>
         <title>AngularJS Skeleton</title>
         <script src="../angular.js"></script>
+        <script src="app.js"></script>
     </head>
     <body ng-app="myApp">
         <div ng-controller="myController">
@@ -9,27 +10,5 @@
             <input ng-model="userName" ng-trim="false" my-validation></input>
             <button>Hello</button>
         </div>
-        <script>
-            angular.module('myApp', [])
-                .controller('myController', ['$scope', '$log', function ($scope, $log) {
-                    $scope.text = "AngularJS it works!"
-                    $log.info('hello from myController');
-                }])
-                .directive('myValidation', function() {
-                    return {
-                        require: 'ngModel',
-                        link: function(scope, element, attrs, modelController) {
-                            modelController.$parsers.push(function(inputValue) {
-                                var transformedInput = inputValue.toLowerCase().replace(/ /g, '');
-                                if (transformedInput !== inputValue) {
-                                    modelController.$setViewValue(transformedInput);
-                                    modelController.$render();
-                                }
-                                return transformedInput;
-                            });
-                        }
-                    };
-                })
-        </script>
     </body>
     </html>
