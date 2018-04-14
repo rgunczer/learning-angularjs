@@ -2,20 +2,9 @@
 <head>
     <title>life cycle events</title>
     <script src="d:\downloads\angular.js"></script>
+    <script src="app.js"></script>
 </head>
 <body ng-app="myApp">
     <my-component></my-component>
-    <script>
-        angular.module('myApp', [])
-            .component('myComponent', {
-                template: '<h1>{{ $ctrl.text }}</h1>',
-                controller: function() {
-                    this.$onInit = function() {
-                        this.text = 'Component';
-                    }
-                }
-            });
-
-    </script>
 </body>
 </html>
