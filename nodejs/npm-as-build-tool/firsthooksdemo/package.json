@@ -1,0 +1,20 @@
+{
+  "name": "firsthooksdemo",
+  "version": "1.0.0",
+  "description": "testing npm script hooks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'running tests'",
+    "pretest": "echo 'before running tests'",
+    "posttest": "echo 'post test",
+    "greet": "echo 'Hello'",
+    "pregreet": "echo 'PreGreet'",
+    "postgreet": "echo 'PostGreet'"
+  },
+  "keywords": [
+    "npm",
+    "script"
+  ],
+  "author": "Robert Gunczer",
+  "license": "ISC"
+}
