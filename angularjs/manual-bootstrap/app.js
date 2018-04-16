@@ -5,6 +5,7 @@ angular.module('App', [])
         $log.info('hello from myController');
     });
 
+// wait for dom ready
 angular
     .element(document)
     .ready(function() {
