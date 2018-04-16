@@ -8,6 +8,6 @@ angular.module('App', [])
 angular
     .element(document)
     .ready(function() {
-        console.log('here');
+        console.log('before angularjs bootstrap');
         angular.bootstrap(document, ['App']);
     });
