@@ -1,0 +1,26 @@
+{
+  "name": "faktor",
+  "version": "1.0.0",
+  "description": "quiz solver",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "quiz",
+    "hack",
+    "js",
+    "angularjs"
+  ],
+  "author": "Robert Gunczer",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-angular": "^3.3.0",
+    "eslint-plugin-jasmine": "^2.10.0"
+  }
+}

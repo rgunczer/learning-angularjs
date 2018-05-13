@@ -1,0 +1,43 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jasmine": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:angular/johnpapa"
+    ],
+    "plugins": [
+        "jasmine",
+        "angular"
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "angular/file-name": [2, { "typeSeparator": "dot" }],
+        "angular/no-service-method": "off",
+        "angular/controller-name": "off",
+        "angular/controller-as": "off"
+    },
+    "globals": {
+        "angular": false,
+        "module": false,
+        "inject": false
+    }
+}

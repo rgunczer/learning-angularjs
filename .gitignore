@@ -27,3 +27,4 @@ obj/
 .vs/
 packages/
 protractor/target/
+faktor/data/api.json
