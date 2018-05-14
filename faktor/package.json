@@ -1,7 +1,7 @@
 {
   "name": "faktor",
   "version": "1.0.0",
-  "description": "quiz solver",
+  "description": "quiz solver spa",
   "main": "index.js",
   "directories": {
     "lib": "lib"
