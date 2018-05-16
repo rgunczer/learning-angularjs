@@ -56,7 +56,24 @@ function takeTest() {
     console.log(res);
 }
 
+function concatTest() {
+    console.log('concatTest');
+    var arr1 = [1,2,3];
+    var arr2 = [4,5,6];
+
+    var res = _.concat(arr1, arr2);
+    console.log(res);
+}
+
+function capitalizeTest() {
+    console.log('capitalizeTest');
+    var res = _.capitalize('JOEL');
+    console.log(res);
+}
+
 findIndexTest();
 chunkTest();
 removeTest();
 takeTest();
+concatTest();
+capitalizeTest();
