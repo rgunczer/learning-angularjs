@@ -4,7 +4,8 @@
   "description": "",
   "dependencies": {
     "angular": "^1.5.11",
-    "jasmine": "^2.8.0"
+    "jasmine": "^2.8.0",
+    "lodash": "^4.17.10"
   },
   "devDependencies": {
     "@types/angularjs": "^1.5.14-alpha",
