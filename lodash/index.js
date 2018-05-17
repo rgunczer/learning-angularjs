@@ -71,9 +71,18 @@ function capitalizeTest() {
     console.log(res);
 }
 
+function uniqueIdTest() {
+    console.log('uniqueIdTest');
+    let id = _.uniqueId();
+    console.log(id);
+    let anotherId = _.uniqueId('prefx-');
+    console.log(anotherId);
+}
+
 findIndexTest();
 chunkTest();
 removeTest();
 takeTest();
 concatTest();
 capitalizeTest();
+uniqueIdTest();
