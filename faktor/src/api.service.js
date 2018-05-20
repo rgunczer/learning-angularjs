@@ -7,10 +7,20 @@ angular
             q: '',
             a: ''
         };
+        var lastHttpError = null;
 
         function logHttpError(response) {
-            $log.error(angular.toJson(response.data, true));
+            lastHttpError = response.data;
+            $log.error(angular.toJson(lastHttpError, true));
         }
+
+        this.getUrlObject = function() {
+            return url;
+        };
+
+        this.getLastHttpError = function() {
+            return lastHttpError;
+        };
 
         this.init = function() {
             $http.get('data/api.json')
@@ -24,6 +34,7 @@ angular
         };
 
         this.getQuestions = function(quizId, xApiKey) {
+            $log.debug(`getQuestions quizId=${quizId}`);
             return $http({
                 method: 'GET',
                 url: url.q + quizId,
