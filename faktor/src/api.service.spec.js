@@ -19,18 +19,15 @@ describe('api', function() {
     });
 
     it('should have a function "init"', function() {
-        expect(api.init).toBeDefined();
-        expect(api.init).toEqual(jasmine.any(Function));
+        expect(api.init).toBeDefinedFunction();
     });
 
     it('should have a function "getQuestions"', function() {
-        expect(api.getQuestions).toBeDefined();
-        expect(api.getQuestions).toEqual(jasmine.any(Function));
+        expect(api.getQuestions).toBeDefinedFunction();
     });
 
     it('should have a function "postAnswers"', function() {
-        expect(api.postAnswers).toBeDefined();
-        expect(api.postAnswers).toEqual(jasmine.any(Function));
+        expect(api.postAnswers).toBeDefinedFunction();
     });
 
     it('should get "api.json" on "init" ', function() {
@@ -69,7 +66,7 @@ describe('api', function() {
 
         $httpBackend
             .expectGET('data/api.json')
-            .respond({ q: 'some/url?id=' })
+            .respond({ q: 'some/url?id=' });
 
         api.init();
         $httpBackend.flush();
@@ -88,11 +85,10 @@ describe('api', function() {
     it('should report error when "getQuestions" fail', function() {
         var quizId = 12;
         var xApiKey = 'abc';
-        var quiz = {};
 
         $httpBackend
             .expectGET('data/api.json')
-            .respond({ q: 'some/url?id=' })
+            .respond({ q: 'some/url?id=' });
 
         api.init();
         $httpBackend.flush();
@@ -114,7 +110,7 @@ describe('api', function() {
 
         $httpBackend
             .expectGET('data/api.json')
-            .respond({ a: 'some/url' })
+            .respond({ a: 'some/url' });
 
         api.init();
         $httpBackend.flush();
@@ -133,11 +129,10 @@ describe('api', function() {
     it('should post answers but fail', function() {
         var obj = {};
         var xApiKey = 'abc';
-        var res = {};
 
         $httpBackend
             .expectGET('data/api.json')
-            .respond({ a: 'some/url' })
+            .respond({ a: 'some/url' });
 
         api.init();
         $httpBackend.flush();
