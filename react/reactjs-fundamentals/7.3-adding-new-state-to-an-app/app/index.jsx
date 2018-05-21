@@ -50,6 +50,19 @@ class App extends React.Component {
                 }
             ]
         };
+        this.addUser = this.addUser.bind(this);
+    }
+    addUser(e) {
+        console.log(this);
+        var user = {
+            name: 'Tom',
+            age: 22,
+            bio: 'enjoys sports',
+            hobbies: ['basketball', 'baseball']
+        };
+        this.setState({
+            profiles: this.state.profiles.concat([user])
+        });
     }
     render() {
         let profile1 = this.state.profiles[0];
@@ -67,6 +80,7 @@ class App extends React.Component {
         return (
             <div>
                 {profiles}
+                <button onClick={this.addUser}>Add new profile</button>
             </div>
         );
     }
