@@ -15,10 +15,40 @@
 
     <script type="text/babel">
 
+        class Welc extends React.Component {
+            constructor() {
+                super();
+                this.name = 'Bel';
+            }
+            render() {
+                return <h1>Hel {this.name}</h1>
+            }
+        }
+
+        function Welcome(props) {
+            return <h1>Hello {props.name}</h1>
+        }
+
+        function App() {
+            return (
+                <div>
+                    <Welcome name="Harry" />
+                    <Welcome name="Jerry" />
+                    <Welcome name="Tom" />
+                </div>
+            );
+        }
+
+
         var Something = React.createClass({
+            age: 12,
+            getVal() {
+                return 'Smith';
+            },
             render: function() {
+                const age = 12;
                 return (
-                    <p>here is something: {this.props.name}</p>
+                    <p>here {this.age} {this.getVal()} is { 1 + 2 } something age is: {age}: {this.props.name}</p>
                 );
             }
         });
@@ -27,6 +57,8 @@
             <div>
                 <h3>React is working!</h3>
                 <Something name="Joel"/>
+                <App />
+                <Welc />
             </div>,
             document.getElementById('example')
         );
