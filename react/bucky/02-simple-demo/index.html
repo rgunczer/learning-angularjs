@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple Demo</title>
+    <script src="https://fb.me/react-15.2.1.js"></script>
+    <script src="https://fb.me/react-dom-15.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="example"></div>
+
+    <script type="text/babel">
+
+        var Something = React.createClass({
+            render: function() {
+                return (
+                    <p>here is something: {this.props.name}</p>
+                );
+            }
+        });
+
+        ReactDOM.render(
+            <div>
+                <h3>React is working!</h3>
+                <Something name="jancsi"/>
+            </div>,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+</html>
