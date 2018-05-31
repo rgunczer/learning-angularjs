@@ -19,4 +19,10 @@ console.log(b.name);
 b.name = 'joel';
 console.log(b.name);
 
-console.log(+new Date());
+console.log(+new Date()); // display milliseconds not actual date but
+
+function foo() {
+    console.log('calle: ' + arguments.callee);
+}
+
+foo();
