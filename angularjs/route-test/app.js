@@ -5,7 +5,9 @@ angular.module('App', ['ngRoute'])
     .factory('myAuth', function($location) {
         return {
             checkAccess: function() {
-                $location.path('/home');
+                // $location.path('/home');
+                $location.path('/denied');
+            // }
             }
         };
     })
@@ -13,7 +15,10 @@ angular.module('App', ['ngRoute'])
         $routeProvider
             .when('/', {
                 title: 'root',
-                template: '<h1>root</h1>',
+                template: '<h1>root {{ name }}</h1>',
+                controller: function($scope) {
+                    $scope.name = 'Ellie';
+                },
                 resolve: {
                     check: function($timeout, $log, myAuth, $location) { // eslint-disable-line no-unused-vars
                         return $timeout(function() {
