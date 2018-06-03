@@ -1,6 +1,10 @@
 angular.module('App', ['ngRoute'])
-    .controller('myController', function($scope) {
+    .controller('myController', function($scope, $log) {
         $scope.text = 'Joel';
+
+        $scope.$on('$viewContentLoaded', function() {
+            $log.info('ng-view -> content loaded event...');
+        });
     })
     .factory('myAuth', function($location) {
         return {
