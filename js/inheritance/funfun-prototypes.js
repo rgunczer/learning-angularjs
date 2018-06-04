@@ -34,3 +34,5 @@ Object.setPrototypeOf(myCat, cat);
 
 console.log(myCat.name);
 console.log(myCat.breed);
+
+console.log('__proto__: ' +  JSON.stringify(myCat.__proto__));
