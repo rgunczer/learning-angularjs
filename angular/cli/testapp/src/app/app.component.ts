@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
+import { HelloService } from './hello.service';
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -11,9 +13,10 @@ export class AppComponent {
     title = 'my app title';
     closeResult: string;
 
-    constructor(private modalService: NgbModal) { }
+    constructor(private modalService: NgbModal, private helloService: HelloService) { }
 
     showSimpleAlert(): void {
+        this.helloService.showSomeText();
         alert('some simple alert to be show here');
     }
 
