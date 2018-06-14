@@ -1,50 +1,57 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Button, PageHeader } from 'react-bootstrap';
+// import logo from './logo.svg';
 import './App.css';
-import { Button, Modal } from 'react-bootstrap';
+import MessageBox from './MessageBox';
+import Menu from './Menu';
 
 class App extends Component {
     constructor(props, context) {
         super(props, context);
 
-        this.handleShow = this.handleShow.bind(this);
+        this.onShowMessageBox = this.onShowMessageBox.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.handleMenuSelect = this.handleMenuSelect.bind(this);
 
         this.state = {
-            show: false,
-            modalText: 'joel and ellie'
+            messageBoxData: { show: false }
         };
     }
-    handleShow() {
-        this.setState({ show: true, modalText: 'another text' })
+    onShowMessageBox() {
+        this.setState({
+            messageBoxData: {
+                show: true,
+                title: 'some modal title',
+                message: 'sample modal message'
+            }
+        });
     }
     handleClose() {
-        this.setState({ show: false })
+        this.setState({ messageBoxData: { show: false } })
+    }
+    handleMenuSelect(selectedMenuItem) {
+        this.setState({
+            messageBoxData: {
+                show: true,
+                title: 'selected menu key',
+                message: selectedMenuItem
+            }
+        });
     }
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">Welcome to React :-)</h1>
-                </header>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
+            <div>
+                <PageHeader bsClass={'App-header'}>
+                    Portal Link <small>DIR Summary</small>
+                </PageHeader>
+                <Menu onselect={this.handleMenuSelect}/>
                 <p>
-                    <Button bsStyle="primary" onClick={this.handleShow}>Show Modal</Button>
+                    <Button bsStyle="primary" onClick={this.onShowMessageBox}>Show Modal</Button>
                 </p>
-                <Modal show={this.state.show} onHide={this.handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <h4>{this.state.modalText}</h4>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button onClick={this.handleClose}>Close</Button>
-                    </Modal.Footer>
-                </Modal>
+
+                <MessageBox
+                    modalData={this.state.messageBoxData}
+                    onclose={this.handleClose} />
             </div>
         );
     }
