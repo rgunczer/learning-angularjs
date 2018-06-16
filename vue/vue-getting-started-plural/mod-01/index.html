@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Growler</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .header {
+            font-family: 'Verdana';
+            margin: 0;
+        }
+        .acc-col {
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vue</h1>
+    <div id="growler">
+        <br>
+        <h2 v-text="appName"></h2>
+        <h3>{{appName}}</h3>
+        <h3 v-text="appName"></h3>
+        once:
+        <h4 v-once>{{appName}}</h4>
+        <div>{{appLink}}</div>
+        <h2 v-html="appLink"></h2>
+
+        <img
+            alt="Growler"
+            v-bind:src="appLogo"
+            style="height: 160px"
+        />
+        <img
+            alt="Growler"
+            :src="appLogo"
+            style="height: 160px"
+        />
+
+        <h2 v-text="appName" v-bind:style="{
+            color:appNameColor,
+            fontFamily:appNameFontFamily,
+            margin:0
+        }"></h2>
+
+        <h2 v-text="appName" v-bind:style="appStyle"></h2>
+
+        <h4
+            v-text="appName"
+            v-bind:style="[accentColor, headers]"
+        ></h4>
+
+        <h1
+            v-text="appName1"
+            v-bind:class="[acc, head]">
+
+        </h1>
+
+        <h2
+            v-text="appName"
+            v-bind:style="{color:isLocal? '#ff6a00' : '#000'}"
+        ></h2>
+
+        <div class="container">
+
+        </div>
+    </div>
+    {{ 1 + 2 }}
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var isLocal = location.host.includes('localhost') || location.host.includes('127.0.0.1');
+        console.log('local: ' + isLocal);
+
+
+        var growler = new Vue({
+            // el: document.getElementById('growler')
+            el: '#growler',
+            data: {
+                appName: 'Vue App',
+                appName1: 'Vue AppZ',
+                appLink: '<a href="/">Growler</a>',
+                appLogo: '/img/vue-logo.jpg',
+                appNameColor: 'red',
+                appNameFontFamily: 'Verdana',
+                appStyle: {
+                    color: '#ff6a00',
+                    fontFamily: 'Verdana',
+                    margin: 0
+                },
+                accentColor: {
+                    color: 'yellow'
+                },
+                headers: {
+                    fontFamily: 'Lucida',
+                    margin: 0
+                },
+                acc: 'acc-col',
+                head: 'header',
+                isLocal: isLocal
+            }
+        })
+    </script>
+</body>
+</html>
+
+// v-bind => designed to bind to html attributes
