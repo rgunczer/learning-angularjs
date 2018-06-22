@@ -24,7 +24,6 @@ angular/Learning Angular LiveLessons/**/*.js
 *.map
 bin/
 obj/
-.vs/
 packages/
 protractor/target/
 faktor/data/api.json
