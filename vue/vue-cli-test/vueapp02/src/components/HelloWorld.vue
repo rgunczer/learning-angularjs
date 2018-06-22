@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     sayHello () {
-      alert('here is the hello')
+      alert('here is the hello: [' + this.msg + ']')
     }
   }
 }

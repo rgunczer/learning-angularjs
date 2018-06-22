@@ -6,5 +6,7 @@ module.exports = {
   runtimeCompiler: undefined,
   parallel: undefined,
   css: undefined,
-  sourceMaps: true
+  configureWebpack: {
+    devtool: 'source-map'
+  }
 }
