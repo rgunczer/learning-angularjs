@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Employees :msg="msg" :emp="employeeData" :emps="employees"/>
+    <Employees :msg="msg" :employees="employees"/>
   </div>
 </template>
 
@@ -12,11 +12,6 @@ export default {
   data: function() {
     return {
       msg: "Welcome to Your Vue.js App on data",
-      employeeData: {
-        name: "Joel",
-        age: 54,
-        kills: 132
-      },
       employees: [
         {
           name: "Joel",
@@ -35,7 +30,7 @@ export default {
     Employees
   },
   created() {
-    console.log("component created...");
+    console.log("App component created...");
   }
 };
 </script>

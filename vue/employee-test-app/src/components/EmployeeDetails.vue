@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import CreatedMixinLogger from '../mixins/created-mixin-logger.js'
+
 export default {
     props: {
         emp: Object,
@@ -18,7 +20,8 @@ export default {
         makeOlder() {
             ++this.emp.age;
         }
-    }
+    },
+    mixins: [CreatedMixinLogger]
 }
 </script>
 
