@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import { Button, PageHeader } from 'react-bootstrap';
 // import logo from './logo.svg';
 import './App.css';
+
+import axios from 'axios';
+import 'promise.prototype.finally';
+
 import MessageBox from './MessageBox';
 import Menu from './Menu';
+
+import 'core-js';
+
+import 'es6-promise';
 
 class App extends Component {
     constructor(props, context) {
@@ -17,6 +25,22 @@ class App extends Component {
             messageBoxData: { show: false }
         };
     }
+
+    componentWillMount() {
+        console.log('making axios request');
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+            .then(response => {
+                console.log('axios then resolved');
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log('errors: ' + error);
+            })
+            .finally( () => {
+                console.log('axios finally');
+            })
+    }
+
     onShowMessageBox() {
         this.setState({
             messageBoxData: {
