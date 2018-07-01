@@ -1,0 +1,8 @@
+[install]
+npm i -g cli-highlight
+npm i -g js-beautify
+npm install --save @babel/parser
+npm i babel-traverse
+
+[run]
+node .\processor.js | js-beautify | highlight
