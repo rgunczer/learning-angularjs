@@ -8,7 +8,7 @@
 
         <button @click="modalShow = !modalShow">sHow</button>
         <b-modal title="Bootstrap-Vue-Modal" v-model="modalShow">
-            <p>Hello from modal using modalShow</p>
+            <p>Hello from modal using modalShow {{ datum | flDate }}</p>
         </b-modal>
 
     </div>
@@ -19,7 +19,8 @@
 export default {
     data() {
         return {
-            modalShow: false
+            modalShow: false,
+            datum: new Date()
         }
     },
     methods: {
