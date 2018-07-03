@@ -21,6 +21,8 @@
       </div>
       <!-- <div slot="modal-ok">Jancsi</div> -->
     </b-modal>
+    <hr>
+    <dialogs-wrapper></dialogs-wrapper>
   </div>
 </template>
 
@@ -28,6 +30,7 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import Test from "./components/Test";
 import moment from 'moment'
+import * as ModalDialogs from 'vue-modal-dialogs'
 
 export default {
   name: "app",
