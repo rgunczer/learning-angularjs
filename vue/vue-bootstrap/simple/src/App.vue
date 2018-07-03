@@ -10,19 +10,23 @@
     <hr>
     {{ datum | flDate }}
     <hr>
-    <button @click="openModal" class="btn btn-primary">Open</button>
+    <button @click="openModal" class="btn btn-primary">OpeNN</button>
     <b-modal
-      ref="openModalRef"
+      v-model="openModald"
       @ok="modalOkClick"
       ok-title="OKK">
       <p slot="modal-title">my custom title</p>
-      <div>
-        some text for the body
-      </div>
+      <custom-modal-content :name="'jancsi'" @mojo="doMojo"/>
       <!-- <div slot="modal-ok">Jancsi</div> -->
     </b-modal>
     <hr>
     <dialogs-wrapper></dialogs-wrapper>
+    <hr>
+    <b-modal
+    v-model="modalShowMojo"
+    ok-title="OK mojo">
+      <p>some content mojo</p>
+    </b-modal>
   </div>
 </template>
 
@@ -31,21 +35,31 @@ import HelloWorld from "./components/HelloWorld.vue";
 import Test from "./components/Test";
 import moment from 'moment'
 import * as ModalDialogs from 'vue-modal-dialogs'
+import CustomModalContent from "./components/CustomModalConent";
 
 export default {
   name: "app",
   data () {
     return {
-      datum: new Date(2005, 0, 12)
+      datum: new Date(2005, 0, 12),
+      modalShowMojo: false,
+      openModald: false
     }
   },
   methods: {
+    doMojo() {
+      //alert('mojo')
+      // this.$refs.modalRefMojo.show()
+      this.modalShowMojo = true
+    },
     openDlg() {
-      this.$refs.myModalRef.show()
+      // this.$refs.myModalRef.show()
+      this.openModald = true
     },
     openModal() {
       console.log('open modal clicked');
-      this.$refs.openModalRef.show();
+      // this.$refs.openModalRef.show();
+      this.openModald = true
     },
     modalOkClick() {
       console.log('modal ok click');
@@ -53,7 +67,8 @@ export default {
   },
   components: {
     HelloWorld,
-    Test
+    Test,
+    CustomModalContent
   },
   created() {
     console.log('moment in created hook:' + moment.locale());
