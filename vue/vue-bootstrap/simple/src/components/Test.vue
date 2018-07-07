@@ -11,6 +11,11 @@
             <p>Hello from modal using modalShow {{ datum | flDate }}</p>
         </b-modal>
 
+        <hr>
+        <hr>
+        <b-btn id="my-button">OK</b-btn>
+        <b-tooltip :disabled.sync="disableTooltip" target="my-button">Tooltip</b-tooltip>
+        <b-btn @click="disableTooltip = !disableTooltip">Enable / Disable Tooltip</b-btn>
     </div>
 </template>
 
@@ -20,7 +25,8 @@ export default {
     data() {
         return {
             modalShow: false,
-            datum: new Date()
+            datum: new Date(),
+            disableTooltip: false
         }
     },
     methods: {
