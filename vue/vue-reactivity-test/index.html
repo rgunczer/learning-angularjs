@@ -15,6 +15,9 @@
         <button @click="addFruit">Add</button>
         <button @click="editFruit">Edit</button>
         <hr>
+            My Test:
+            <my-test :msg="message" :fruits="fruits"></my-test>
+        <hr>
         <ul>
             <li v-for="fruit in fruits">{{fruit.name}} - {{fruit.uuid}}</li>
         </ul>
@@ -23,28 +26,16 @@
             <li v-for="fruit in fruts">{{fruit.name}} - {{fruit.uuid}}</li>
         </ul>
     </div>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                message: 'Hi There!',
-                fruits: []
-            },
-            computed: {
-                fruts() {
-                    return this.fruits
-                }
-            },
-            methods: {
-                addFruit () {
-                    this.fruits.push({ type: 'fruit',  name: 'Apple', uuid: _.uniqueId('frt-')})
-                },
-                editFruit () {
-                    // this.fruits[1] = { name: 'Apple2' }
-                    this.fruits[1].name = 'Apple2'
-                }
-            }
-        })
+    <script type="text/x-template" id="test-comp-template">
+        <div>
+            <div>Test Comp: {{msg}}</div>
+            <p>fruits:</p>
+            <ul>
+                <li v-for="fruit in fruits">{{fruit.name}}</li>
+            </ul>
+        </div>
     </script>
+    <script src="TestComponent.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
