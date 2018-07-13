@@ -28,7 +28,7 @@ export class ApiService {
       .pipe(
         map((data: any[]) => {
           console.log('map before: ' + data);
-          data.push({ text: 'jancsika'});
+          data.push({ text: 'passion'});
           console.log('map after: ' + data);
           return data;
         }),
