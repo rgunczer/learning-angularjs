@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, VERSION } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,8 +17,15 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'users', component: UsersComponent },
   { path: 'users/:id/:name', component: UserComponent },
-  { path: 'servers', component: ServersComponent }
+  { path: 'servers', component: ServersComponent },
+  { path: 'servers/:id', component: ServerComponent },
+  { path: 'servers/:id/edit', component: EditServerComponent }
 ];
+
+console.log(VERSION.major);
+console.log(VERSION.minor);
+console.log(VERSION.patch);
+console.log(VERSION.full);
 
 @NgModule({
   declarations: [
