@@ -5,7 +5,7 @@
         <!-- [fragment[="'loading'" property -->
       <a
         [routerLink]="['/servers', server.id]"
-        [queryParams]="{ allowEdit: '1', save: false }"
+        [queryParams]="{ allowEdit: server.id === 3 ? '1' : '0' , save: false }"
         [fragment]="'loading'"
         href="#"
         class="list-group-item"
@@ -22,8 +22,9 @@
     <!-- go back one level like in folder navigation -->
     <a routerLink="../servers">Reload Page</a>
     <button class="btn btn-primary" (click)="onReload()">Reload Page</button>
-    <app-edit-server></app-edit-server>
-    <hr>
+    <!-- <app-edit-server></app-edit-server> -->
+    <!-- <hr> -->
     <!-- <app-server></app-server> -->
+    <router-outlet></router-outlet>
   </div>
 </div>
