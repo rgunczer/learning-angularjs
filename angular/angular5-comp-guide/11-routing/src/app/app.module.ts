@@ -13,6 +13,8 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { ServerResolver } from './servers/server/server-resolver.service';
 
 console.log(VERSION.major);
 console.log(VERSION.minor);
@@ -28,7 +30,8 @@ console.log(VERSION.full);
     UserComponent,
     EditServerComponent,
     ServerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ console.log(VERSION.full);
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ServersService],
+  providers: [ServersService, ServerResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
