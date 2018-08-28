@@ -1,15 +1,30 @@
 <div class="container">
     <div class="row">
         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <button type="button" class="btn btn-default" (click)="fillWithDefaults()">Fill With Defaults</button>
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" class="form-control" name="name" ngModel>
+                <label appHilite for="name">Name</label> <button type="button" class="btn btn-default" (click)="fillName()" >Fill Name</button>
+                <input type="text" appHilite id="name" class="form-control" name="name" ngModel required>
             </div>
             <div class="form-group">
                 <label for="age">Age</label>
-                <input type="text" id="age" class="form-control" name="age" ngModel>
+                <select name="age" class="form-control" (change)="onAgeChange($event.target.value)" [ngModel]="defaultAge" required>
+                    <option value=""></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
             </div>
-            <button class="btn btn-primary" type="submit">Submit</button>
+            <div class="form-group">
+                <label for="game">Game:</label>
+                <input type="text" name="game" class="form-control" [(ngModel)]="game">
+            </div>
+            <div class="radio" *ngFor="let c of colors">
+                <label>
+                    <input type="radio" name="color" [value]="c" ngModel>{{ c }}
+                </label>
+            </div>
+            <button [disabled]="!f.valid" class="btn btn-primary" type="submit">Submit</button>
         </form>
     </div>
 </div>
