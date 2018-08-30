@@ -22,12 +22,20 @@
                 <label for="game">Game:</label>
                 <input type="text" name="game" class="form-control" [(ngModel)]="game">
             </div>
-            <div class="radio" *ngFor="let c of colors">
+            <!-- <div class="radio" *ngFor="let c of colors">
                 <label>
                     <input type="radio" name="color" [value]="c" ngModel>{{ c }}
                 </label>
-            </div>
+            </div> -->
+            <!-- <app-color-picker [colors]="['lightgray', 'lightgreen', 'lightblue']" [(selectedColor)]="color"></app-color-picker> -->
+            <app-color-picker [colors]="['lightgray', 'lightgreen', 'lightblue']" [(ngModel)]="color" name="color" required [disabled]="isColorPickerDisabled"></app-color-picker>
+            <button type="button" (click)="isColorPickerDisabled = !isColorPickerDisabled">Disable Color Picker</button>
+            <br>
+            <br>
+            Selected Color: {{ color }}
+            <br>
             <button [disabled]="!f.valid" class="btn btn-primary" type="submit">Submit</button>
         </form>
+        <pre>{{ f.value | json }}</pre>
     </div>
 </div>

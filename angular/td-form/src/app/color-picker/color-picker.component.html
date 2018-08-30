@@ -1,0 +1,8 @@
+<a *ngFor="let color of colors"
+    class="color"
+    [style.backgroundColor]="color"
+    [class.selected]="color === selectedColor"
+    [class.disabled]="isDisabled"
+    (click)="!isDisabled && selectColor(color)">
+    {{color}}
+</a>

@@ -11,7 +11,7 @@ export class TestDirective implements OnInit {
     ngOnInit() {
         this.model.valueAccessor.registerOnChange( () => {
             console.log('on chnage...');
-        })
+        });
     }
 
     // @HostListener('ngModelChange') onModelChange(value) {

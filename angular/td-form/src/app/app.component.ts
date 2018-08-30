@@ -10,7 +10,9 @@ export class AppComponent {
     defaultAge = 2;
     game = '';
     colors = ['red', 'green', 'blue'];
+    color = '';
 
+    isColorPickerDisabled = false;
 
     @ViewChild('f') signupForm: NgForm;
 
@@ -32,7 +34,7 @@ export class AppComponent {
             name: 'Joel',
             age: 1,
             game: 'tetris',
-            color: 'green'
+            color: 'lightgray'
         });
     }
 

@@ -1,0 +1,17 @@
+.color {
+    display: inline;
+    padding: 10px 20px;
+    border: 1px solid black;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+.selected {
+    border: 2px solid black;
+}
+
+.disabled {
+    border: 6px solid gray;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
