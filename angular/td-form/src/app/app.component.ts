@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
     defaultAge = 2;
+    defaultCounterValue = 10;
     game = '';
     colors = ['red', 'green', 'blue'];
     color = '';

@@ -10,9 +10,10 @@ import { UppercaseDirective } from './uppercase.directive';
 import { TestDirective } from './test.directive';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
 import { ColorPickerRequiredDirective } from './color-picker-required.directive';
+import { CounterInputComponent } from './counter-input/counter-input.component';
 
 @NgModule({
-    declarations: [AppComponent, HiliteDirective, RainbowDirective, Rainbow2Directive, UppercaseDirective, TestDirective, ColorPickerComponent, ColorPickerRequiredDirective],
+    declarations: [AppComponent, HiliteDirective, RainbowDirective, Rainbow2Directive, UppercaseDirective, TestDirective, ColorPickerComponent, ColorPickerRequiredDirective, CounterInputComponent],
     imports: [BrowserModule, FormsModule],
     providers: [],
     bootstrap: [AppComponent]

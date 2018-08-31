@@ -35,7 +35,12 @@
             Selected Color: {{ color }}
             <br>
             <button [disabled]="!f.valid" class="btn btn-primary" type="submit">Submit</button>
+
+            <app-counter-input name="counter" counterRangeMax="4" counterRangeMin="2" [ngModel]="defaultCounterValue" #cnt="ngModel"></app-counter-input>
+            <p *ngIf="!cnt.valid">Counter is invalid!</p>
         </form>
         <pre>{{ f.value | json }}</pre>
+        <pre>{{ f.errors | json }}</pre>
+        <pre>{{ f.valid | json }}</pre>
     </div>
 </div>
