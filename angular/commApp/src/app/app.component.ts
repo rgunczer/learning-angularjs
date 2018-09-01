@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { TimerComponent } from './timer/timer.component';
 import { SharedService } from './shared.service';
 
@@ -7,7 +7,7 @@ import { SharedService } from './shared.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   heroName = 'Batman';
   heroMajor = 1;
   heroMinor = 2;
@@ -15,7 +15,17 @@ export class AppComponent {
   @ViewChild(TimerComponent)
   timerComp: TimerComponent;
 
-  constructor(private sharedService: SharedService) {}
+  constructor(
+    private sharedService: SharedService
+  ) {
+  }
+
+  ngOnInit() {
+    this.sharedService.fromChild$
+      .subscribe( (msg: string)  => {
+        alert('from child: ' + msg);
+      });
+  }
 
   eventHandler(value) {
     console.log('event handler...', value);
@@ -28,4 +38,9 @@ export class AppComponent {
   startTimer() {
     this.timerComp.start();
   }
+
+  sendToChildren() {
+    this.sharedService.sendToChildren('msg to children');
+  }
+
 }

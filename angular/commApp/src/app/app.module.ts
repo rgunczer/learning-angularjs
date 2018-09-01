@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -8,6 +8,11 @@ import { SecondChildCompComponent } from './second-child-comp/second-child-comp.
 import { ThirdChildCompComponent } from './third-child-comp/third-child-comp.component';
 import { TimerComponent } from './timer/timer.component';
 import { ViaServiceComponent } from './via-service/via-service.component';
+import { StartupDataProvider } from './startup-data-provider';
+
+export function startupDataProviderFactory(provider: StartupDataProvider) {
+  return () => provider.load();
+}
 
 @NgModule({
   declarations: [
@@ -22,7 +27,15 @@ import { ViaServiceComponent } from './via-service/via-service.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    StartupDataProvider,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: startupDataProviderFactory,
+      deps: [StartupDataProvider],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
