@@ -1,0 +1,25 @@
+<input type="text" [(ngModel)]="heroName">
+
+<app-child-comp [name]="heroName"></app-child-comp>
+
+<hr>
+<input type="text" [(ngModel)]="heroMajor">
+<input type="text" [(ngModel)]="heroMinor">
+
+<app-second-child-comp [major]="heroMajor" [minor]="heroMinor"></app-second-child-comp>
+
+<hr>
+
+<app-third-child-comp (someEvent)="eventHandler($event)"></app-third-child-comp>
+
+<hr>
+
+<button (click)="timer.start()">Start</button>
+<button (click)="timer.stop()">Stop</button>
+<button (click)="showStatus(timer.state)">Get Status</button>
+<br>
+<button (click)="startTimer()">Start</button>
+
+
+
+<app-timer #timer></app-timer>
