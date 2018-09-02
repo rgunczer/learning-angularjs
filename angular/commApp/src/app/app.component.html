@@ -26,3 +26,9 @@
 <button (click)="sendToChildren()">To Children</button>
 
 <app-via-service></app-via-service>
+
+<hr>
+
+format date: {{ dateValue | date: 'dd.MM.yyyy' }}
+<br>
+my format date: {{ dateValue | myDate }}

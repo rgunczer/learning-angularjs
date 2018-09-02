@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   heroName = 'Batman';
   heroMajor = 1;
   heroMinor = 2;
+  dateValue = new Date();
 
   @ViewChild(TimerComponent)
   timerComp: TimerComponent;
