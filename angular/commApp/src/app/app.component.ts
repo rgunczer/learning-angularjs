@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, Inject } from '@angular/core';
 import { TimerComponent } from './timer/timer.component';
 import { SharedService } from './shared.service';
 
@@ -17,8 +17,10 @@ export class AppComponent implements OnInit {
   timerComp: TimerComponent;
 
   constructor(
+    @Inject('API_URL') private apiUrl: string,
     private sharedService: SharedService
   ) {
+    console.log('apiUrl: ', this.apiUrl);
   }
 
   ngOnInit() {

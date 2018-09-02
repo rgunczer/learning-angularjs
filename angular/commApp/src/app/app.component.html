@@ -32,3 +32,17 @@
 format date: {{ dateValue | date: 'dd.MM.yyyy' }}
 <br>
 my format date: {{ dateValue | myDate }}
+
+<hr>
+popup directive:
+<div appPopup message="Some message" #popup1="popup">Some div element</div>
+
+<i class="alarm icon" message="icon message" appPopup #popup2="popup">i</i>
+
+
+<button (click)="popup1.displayMessage()">disp msg 1</button>
+<button (click)="popup2.displayMessage()">disp msg 2</button>
+
+<hr>
+
+Search: <app-search-box></app-search-box>

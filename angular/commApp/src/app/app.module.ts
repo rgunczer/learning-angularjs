@@ -11,6 +11,8 @@ import { TimerComponent } from './timer/timer.component';
 import { ViaServiceComponent } from './via-service/via-service.component';
 import { StartupDataProvider } from './startup-data-provider';
 import { MyDatePipe } from './my-date.pipe';
+import { PopupDirective } from './popup.directive';
+import { SearchBoxComponent } from './search-box/search-box.component';
 
 export function startupDataProviderFactory(provider: StartupDataProvider) {
   return () => provider.load();
@@ -24,7 +26,9 @@ export function startupDataProviderFactory(provider: StartupDataProvider) {
     ThirdChildCompComponent,
     TimerComponent,
     ViaServiceComponent,
-    MyDatePipe
+    MyDatePipe,
+    PopupDirective,
+    SearchBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,10 @@ export function startupDataProviderFactory(provider: StartupDataProvider) {
       useFactory: startupDataProviderFactory,
       deps: [StartupDataProvider],
       multi: true
+    },
+    {
+      provide: 'API_URL',
+      useValue: 'http://my.api.com/v1'
     }
   ],
   bootstrap: [AppComponent]
