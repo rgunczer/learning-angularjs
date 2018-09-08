@@ -1,4 +1,10 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  AfterViewInit
+} from '@angular/core';
 import { fromEvent, Observable } from 'rxjs';
 import { map, filter, debounceTime, tap, switchAll } from 'rxjs/operators';
 
@@ -8,15 +14,13 @@ import { map, filter, debounceTime, tap, switchAll } from 'rxjs/operators';
   styleUrls: ['./search-box.component.css']
 })
 export class SearchBoxComponent implements OnInit, AfterViewInit {
-
   // @ViewChild('t') t: ElementRef;
 
   constructor(private el: ElementRef) {
     console.log('search box: ' + el.nativeElement);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     // this.t.nativeElement.value = 'foo';
@@ -32,19 +36,15 @@ export class SearchBoxComponent implements OnInit, AfterViewInit {
         //   return text.length > 1;
         // }),
         debounceTime(600),
-        tap( (text: string) => console.log('loading: [' + text + ']')),
-        map( (q: string) => this.search(q)),
+        tap((text: string) => console.log('loading: [' + text + ']')),
+        map((q: string) => this.search(q)),
         switchAll<string>()
       )
-      .subscribe( (e: any) => {
-
-      });
-
+      .subscribe((e: any) => {});
   }
 
   search(q: string): string {
     console.log('search: ' + q);
     return q + ' aaa';
   }
-
 }
