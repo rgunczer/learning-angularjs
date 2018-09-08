@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dragDropApp';
+  age = 12;
+
+  persons = [
+    {
+      id: 1,
+      name: 'joel'
+    },
+    {
+      id: 2,
+      name: 'ellie'
+    },
+    {
+      id: 3,
+      name: 'tess'
+    }
+  ];
+
 }
