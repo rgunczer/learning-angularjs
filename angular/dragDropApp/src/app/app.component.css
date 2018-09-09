@@ -6,3 +6,7 @@
   border: 1px solid black;
   cursor: pointer;
 }
+
+.drag-over {
+    border: 2px dashed black;
+}

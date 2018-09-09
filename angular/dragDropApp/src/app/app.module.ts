@@ -4,11 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { OnlyNumberDirective } from './only-number.directive';
+import { DraggableDirective } from './draggable.directive';
+import { DropTargetDirective } from './drop-target.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OnlyNumberDirective
+    OnlyNumberDirective,
+    DraggableDirective,
+    DropTargetDirective
   ],
   imports: [
     BrowserModule,
