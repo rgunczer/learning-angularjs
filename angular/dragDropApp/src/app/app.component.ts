@@ -9,6 +9,7 @@ import { Person } from './person';
 export class AppComponent implements OnInit {
     title = 'dragDropApp';
     age = 12;
+    name = '';
 
     persons: Person[] = [
         {

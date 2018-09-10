@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { OnlyNumberDirective } from './only-number.directive';
 import { DraggableDirective } from './draggable.directive';
 import { DropTargetDirective } from './drop-target.directive';
+import { UpperCaseDirective } from './upper-case.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     OnlyNumberDirective,
     DraggableDirective,
-    DropTargetDirective
+    DropTargetDirective,
+    UpperCaseDirective
   ],
   imports: [
     BrowserModule,

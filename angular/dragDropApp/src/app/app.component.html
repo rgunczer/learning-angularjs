@@ -3,6 +3,12 @@ The age is: {{ age }}
 
 <hr>
 
+To Uppercase: <input type="text" appUpperCase [(ngModel)]="name">
+Name is: {{ name }}
+
+
+<hr>
+
 <div *ngFor="let person of persons"
     class="person-row"
     appDraggable
