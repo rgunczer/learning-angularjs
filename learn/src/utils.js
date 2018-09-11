@@ -13,5 +13,7 @@ export function sayMyName(obj) {
 }
 
 export function sayNames() {
+    console.log('sayNames begin: ' + names.length);
     names.forEach(name => console.log(name));
+    console.log('sayNames end');
 }
