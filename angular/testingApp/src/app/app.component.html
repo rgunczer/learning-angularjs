@@ -1,0 +1,7 @@
+<div style="text-align:center">
+  <h1 [ngStyle]="{'background-color': bgColor}">
+    Welcome to {{ title }}!
+  </h1>
+  <input type="text" [(ngModel)]="bgColor">
+  <button (click)="onClick()">Click Me</button>
+</div>
