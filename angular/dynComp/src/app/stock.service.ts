@@ -12,6 +12,6 @@ export class StockService {
   ) { }
 
   getStocks(query: string): Observable<any> {
-    return this.http.get('https://swapi.co/api/people/' + query)
+    return this.http.get('https://swapi.co/api/people/');
   }
 }
