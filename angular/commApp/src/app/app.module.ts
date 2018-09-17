@@ -13,6 +13,7 @@ import { StartupDataProvider } from './startup-data-provider';
 import { MyDatePipe } from './my-date.pipe';
 import { PopupDirective } from './popup.directive';
 import { SearchBoxComponent } from './search-box/search-box.component';
+import { MyFilterComponent } from './my-filter/my-filter.component';
 
 export function startupDataProviderFactory(provider: StartupDataProvider) {
   return () => provider.load();
@@ -28,7 +29,8 @@ export function startupDataProviderFactory(provider: StartupDataProvider) {
     ViaServiceComponent,
     MyDatePipe,
     PopupDirective,
-    SearchBoxComponent
+    SearchBoxComponent,
+    MyFilterComponent
   ],
   imports: [
     BrowserModule,

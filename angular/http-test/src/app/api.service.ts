@@ -19,7 +19,10 @@ export class ApiService {
       // };
   }
   private handleError (error) {
-    return throwError('Something bad happened; please try again later.');
+    // return throwError('Something bad happened; please try again later.');
+
+    // return new ErrorObservable('boo');
+    return Observable.throw('dsf');
   }
 
   getDataAndProcess() {

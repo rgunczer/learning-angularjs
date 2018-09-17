@@ -35,7 +35,7 @@ export class StockListComponent implements OnInit {
     this.stocks$.subscribe(
       (data) => {
         console.log('data', data);
-        this.stocks = data.results;
+        this.stocks = data.results; // FIXME: add class member
       }
     );
   }
