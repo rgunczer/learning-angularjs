@@ -33,7 +33,7 @@ export class StockListComponent implements OnInit {
     );
 
     this.stocks$.subscribe(
-      (data) => {
+      (data: any) => {
         console.log('data', data);
         this.stocks = data.results; // FIXME: add class member
       }
