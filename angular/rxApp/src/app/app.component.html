@@ -7,3 +7,52 @@
 </div>
 <button type="button" (click)="setTitle()">Set Title</button>
 <hr>
+<dx-button text="Press me" (onClick)="helloWorld()"></dx-button>
+<dx-button text="Show / Hide Popup" (onClick)="showPopup()"></dx-button>
+<hr>
+
+<dx-popup
+  dragEnabled="false"
+  showTitle="false"
+  showCloseButton="false"
+  closeOnOutsideClick="true"
+  [(visible)]="isPopupVisible">
+    <div *dxTemplate="let data of 'content'">
+      <dx-calendar
+        id="calendar-container"
+        [min]="minDateValue"
+        [max]="maxDateValue"
+        [disabled]="false"
+        [(value)]="currentValue"
+        (onValueChanged)="valueChange($event)" >
+      </dx-calendar>
+    </div>
+</dx-popup>
+
+<hr>
+
+<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on left">Tooltip on left</button>
+
+<hr>
+
+<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<button id="calendar-button" type="button" class="btn btn-primary" (click)="showCalendarModal()">Open Modal Programatically</button>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <dx-calendar
+        id="calendar-container"
+        [min]="minDateValue"
+        [max]="maxDateValue"
+        [disabled]="false"
+        [(value)]="currentValue"
+        (onValueChanged)="valueChange($event)" >
+      </dx-calendar>
+
+      </div>
+  </div>
+</div>

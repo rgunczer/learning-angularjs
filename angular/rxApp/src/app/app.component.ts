@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { fakeAsync } from '@angular/core/testing';
 
 
 @Component({
@@ -12,6 +13,12 @@ import { map } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   title = 'rxApp';
+
+  minDateValue: Date;
+  maxDateValue: Date;
+  currentValue = new Date();
+
+  isPopupVisible = false;
 
   constructor(
     private http: HttpClient,
@@ -47,6 +54,37 @@ export class AppComponent implements OnInit {
 
   setTitle() {
     this.titleService.setTitle('jancsi');
+  }
+
+  helloWorld() {
+    alert('hello world');
+  }
+
+  valueChange(event) {
+    alert('value change: ' + event.value);
+  }
+
+  showPopup() {
+    this.isPopupVisible = !this.isPopupVisible;
+  }
+
+  showCalendarModal() {
+    const button = $('#calendar-button');
+
+    const modal = $('#myModal');
+
+    modal.modal('show');
+
+    const pos = button.position();
+
+
+
+    modal.offset({left: pos.left, top: pos.top - 330});
+
+
+
+
+    console.log(pos);
   }
 
 }
