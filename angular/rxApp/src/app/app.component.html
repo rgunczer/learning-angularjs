@@ -31,20 +31,45 @@
 
 <hr>
 
-<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on left">Tooltip on left</button>
+
+<div class="dx-field">
+    <div class="dx-field-label">Default mode</div>
+    <div class="dx-field-value-static">
+        <p>
+          <input type="text" [(ngModel)]="currentValue" value="DD.MM.YYYY" autocomplete="off" spellcheck="false">
+          <button type="button" id="link1" class="dx-datebox-calendar-icon" (click)="toggleDefault()">Calendar</button>
+        </p>
+        <dx-popover
+            target="#link1"
+            minWidth="300"
+            minHeight="300"
+            position="top"
+            [(visible)]="defaultVisible">
+            <div *dxTemplate="let data = model of 'content'">
+                <dx-calendar
+                  id="calendar-container"
+                  [min]="minDateValue"
+                  [max]="maxDateValue"
+                  [disabled]="false"
+                  [(value)]="currentValue"
+                  (onValueChanged)="valueChange($event)" >
+                </dx-calendar>
+            </div>
+        </dx-popover>
+    </div>
+</div>
 
 <hr>
 
-<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Open Modal</button>
-<button id="calendar-button" type="button" class="btn btn-primary" (click)="showCalendarModal()">Open Modal Programatically</button>
 
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-body">
-        <dx-calendar
+<hr>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-primary" data-toggle="dropdown">Open Modal &nbsp;<span class="caret"></span></button>
+  <ul id="jancsi" class="dropdown-menu">
+    <li>
+      <dx-calendar
         id="calendar-container"
         [min]="minDateValue"
         [max]="maxDateValue"
@@ -52,7 +77,41 @@
         [(value)]="currentValue"
         (onValueChanged)="valueChange($event)" >
       </dx-calendar>
-
-      </div>
-  </div>
+    </li>
+  </ul>
 </div>
+
+<hr>
+
+<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on left">Tooltip on left</button>
+
+<hr>
+
+<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<button id="calendar-button" type="button" class="btn btn-primary" (click)="showCalendarModal()">Show Calendar Modal</button>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-body">
+        <dx-calendar
+          id="calendar-container"
+          [min]="minDateValue"
+          [max]="maxDateValue"
+          [disabled]="false"
+          [(value)]="currentValue"
+          (onValueChanged)="valueChange($event)" >
+        </dx-calendar>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<hr>
+
+
+<br>
+<br>

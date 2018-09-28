@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import { DxButtonModule, DxCalendarModule, DxPopupModule } from 'devextreme-angular';
+import { DxButtonModule, DxCalendarModule, DxPopupModule, DxPopoverModule } from 'devextreme-angular';
 
 import { AppComponent } from './app.component';
 import { SimpleComponent } from './simple/simple.component';
@@ -18,7 +19,9 @@ import { HttpClientModule  } from '@angular/common/http';
     HttpClientModule,
     DxButtonModule,
     DxCalendarModule,
-    DxPopupModule
+    DxPopupModule,
+    DxPopoverModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

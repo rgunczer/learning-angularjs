@@ -1,10 +1,10 @@
 import { Title } from '@angular/platform-browser';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of, forkJoin } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { fakeAsync } from '@angular/core/testing';
+import { DxPopoverComponent } from 'devextreme-angular';
 
+declare var $;
 
 @Component({
   selector: 'app-root',
@@ -19,6 +19,10 @@ export class AppComponent implements OnInit {
   currentValue = new Date();
 
   isPopupVisible = false;
+
+  defaultVisible = false;
+
+  @ViewChild(DxPopoverComponent) popover: DxPopoverComponent;
 
   constructor(
     private http: HttpClient,
@@ -52,6 +56,10 @@ export class AppComponent implements OnInit {
     // );
   }
 
+  toggleDefault() {
+    this.defaultVisible = !this.defaultVisible;
+  }
+
   setTitle() {
     this.titleService.setTitle('jancsi');
   }
@@ -61,7 +69,8 @@ export class AppComponent implements OnInit {
   }
 
   valueChange(event) {
-    alert('value change: ' + event.value);
+    console.log('value change: ' + event.value);
+    this.popover.visible = false;
   }
 
   showPopup() {
@@ -71,20 +80,24 @@ export class AppComponent implements OnInit {
   showCalendarModal() {
     const button = $('#calendar-button');
 
-    const modal = $('#myModal');
+    const popup = $('#myModal');
 
-    modal.modal('show');
+    popup.modal('show');
 
     const pos = button.position();
 
-
-
-    modal.offset({left: pos.left, top: pos.top - 330});
-
-
-
-
     console.log(pos);
+
+    const data = {
+      left: pos.left,
+      top: pos.top - 330
+    };
+
+    console.log(data);
+
+    popup.position(data);
+
+    // console.log(pos);
   }
 
 }
