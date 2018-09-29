@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of, forkJoin } from 'rxjs';
 import { DxPopoverComponent } from 'devextreme-angular';
+import { EventListener } from '@angular/core/src/debug/debug_node';
+import { isDate } from 'util';
 
 declare var $;
 
@@ -20,7 +22,7 @@ export class AppComponent implements OnInit {
 
   isPopupVisible = false;
 
-  defaultVisible = false;
+  calendarVisible = false;
 
   @ViewChild(DxPopoverComponent) popover: DxPopoverComponent;
 
@@ -56,8 +58,8 @@ export class AppComponent implements OnInit {
     // );
   }
 
-  toggleDefault() {
-    this.defaultVisible = !this.defaultVisible;
+  toggleCalendar() {
+    this.calendarVisible = !this.calendarVisible;
   }
 
   setTitle() {
@@ -70,7 +72,8 @@ export class AppComponent implements OnInit {
 
   valueChange(event) {
     console.log('value change: ' + event.value);
-    this.popover.visible = false;
+    // this.popover.visible = false;
+    this.calendarVisible = false;
   }
 
   showPopup() {
@@ -98,6 +101,23 @@ export class AppComponent implements OnInit {
     popup.position(data);
 
     // console.log(pos);
+  }
+
+  currentValueChange(event: string) {
+    const parts = event.split('.');
+    if (parts.length === 3) {
+      const day = Number(parts[0]);
+      const month = Number(parts[1]) - 1;
+      const year = Number(parts[2]);
+
+      const date = new Date(year, month, day);
+      // if (isDate(date)) {
+        this.currentValue = date;
+      // }
+    } else {
+      this.currentValue = null;
+    }
+    console.log(event);
   }
 
 }

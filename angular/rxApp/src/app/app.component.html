@@ -36,15 +36,16 @@
     <div class="dx-field-label">Default mode</div>
     <div class="dx-field-value-static">
         <p>
-          <input type="text" [(ngModel)]="currentValue" value="DD.MM.YYYY" autocomplete="off" spellcheck="false">
-          <button type="button" id="link1" class="dx-datebox-calendar-icon" (click)="toggleDefault()">Calendar</button>
+          <!-- <input type="text" [(ngModel)]="currentValue" (change)="onChange" value="DD.MM.YYYY" autocomplete="off" spellcheck="false"> -->
+          <input type="text" [ngModel]="currentValue | date:'dd.MM.yyyy'" (ngModelChange)="currentValueChange($event)" value="DD.MM.YYYY" autocomplete="off" spellcheck="false">
+          <button type="button" id="link1" class="dx-datebox-calendar-icon" (click)="toggleCalendar()">Calendar</button>
         </p>
         <dx-popover
             target="#link1"
             minWidth="300"
             minHeight="300"
             position="top"
-            [(visible)]="defaultVisible">
+            [(visible)]="calendarVisible">
             <div *dxTemplate="let data = model of 'content'">
                 <dx-calendar
                   id="calendar-container"
@@ -59,6 +60,8 @@
     </div>
 </div>
 
+
+{{ currentValue | json }}
 <hr>
 
 
