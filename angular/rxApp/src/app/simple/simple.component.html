@@ -1,3 +1,26 @@
-<p>
-  simple works!
-</p>
+<div class="dx-field">
+  <div class="dx-field-label">Default mode</div>
+  <div class="dx-field-value-static">
+      <div>
+        <input #inp type="text" (keyup)="onKeyUp($event)" [ngModel]="currentValue | date:'dd.MM.yyyy'" (ngModelChange)="currentValueChange($event)" value="DD.MM.YYYY" autocomplete="off" spellcheck="false">
+        <button type="button" [id]="'link' + idPrefix" class="dx-datebox-calendar-icon" (click)="toggleCalendar()">Calendar</button>
+      </div>
+      <dx-popover
+          [target]="'#link' + idPrefix"
+          minWidth="300"
+          minHeight="300"
+          position="top"
+          [(visible)]="calendarVisible">
+          <div *dxTemplate="let data = model of 'content'">
+              <dx-calendar
+                id="calendar-container"
+                [min]="minDateValue"
+                [max]="maxDateValue"
+                [disabled]="false"
+                [(value)]="currentValue"
+                (onValueChanged)="valueChange($event)" >
+              </dx-calendar>
+          </div>
+      </dx-popover>
+  </div>
+</div>

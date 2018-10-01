@@ -58,22 +58,12 @@ export class AppComponent implements OnInit {
     // );
   }
 
-  toggleCalendar() {
-    this.calendarVisible = !this.calendarVisible;
-  }
-
   setTitle() {
     this.titleService.setTitle('jancsi');
   }
 
   helloWorld() {
     alert('hello world');
-  }
-
-  valueChange(event) {
-    console.log('value change: ' + event.value);
-    // this.popover.visible = false;
-    this.calendarVisible = false;
   }
 
   showPopup() {
