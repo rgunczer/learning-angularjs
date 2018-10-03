@@ -30,14 +30,11 @@
 </dx-popup>
 
 <hr>
-
-
-<app-simple [idPrefix]="1"></app-simple>
-
+Date One: <app-simple [idPrefix]="1" [(ngModel)]="dateOne"></app-simple>
+[{{ dateOne }}]
 <hr>
-
-<app-simple [idPrefix]="2"></app-simple>
-
+Date Two: <app-simple [idPrefix]="2" [(ngModel)]="dateTwo"></app-simple>
+[{{ dateTwo }}]
 <hr>
 
 {{ currentValue | json }}

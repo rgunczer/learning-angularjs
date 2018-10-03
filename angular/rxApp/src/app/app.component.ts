@@ -16,6 +16,9 @@ declare var $;
 export class AppComponent implements OnInit {
   title = 'rxApp';
 
+  dateOne: Date | string = '';
+  dateTwo = new Date();
+
   minDateValue: Date;
   maxDateValue: Date;
   currentValue = new Date();
