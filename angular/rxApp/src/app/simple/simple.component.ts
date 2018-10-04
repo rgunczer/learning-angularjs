@@ -3,7 +3,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
 import * as $ from 'jquery';
-import { SELECT_VALUE_ACCESSOR } from '@angular/forms/src/directives/select_control_value_accessor';
 
 @Component({
   selector: 'app-simple',
@@ -17,11 +16,16 @@ import { SELECT_VALUE_ACCESSOR } from '@angular/forms/src/directives/select_cont
 })
 export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 
+  sectionIndex = 0;
+  debugData = {
+    pos: -1,
+  };
   calendarVisible = false;
   currentValue = new Date();
   minDateValue: Date;
   maxDateValue: Date;
   datePipe = new DatePipe('en');
+  $el: JQuery;
 
   @ViewChild('inp') inputElementRef: ElementRef;
   @Input() idPrefix: string;
@@ -34,14 +38,83 @@ export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAcces
   }
 
   ngAfterViewInit() {
-    const $el = $(this.inputElementRef.nativeElement);
-    $el.on('keydown', (event) => {
-      console.log('keydown...', event);
-      if (event.key === 'd') {
-        console.log('d is pressed...');
-        this.onChange('JANCSI');
-      }
+    this.$el = $(this.inputElementRef.nativeElement);
+
+    this.$el.focus( (event) => {
+      this.sectionIndex = 0;
+      this.hiliteSection();
     });
+
+    this.$el.on('keydown', (event) => {
+      console.log('keydown...', event);
+
+      // if (event.key === 'd') {
+      //   event.preventDefault();
+      //   event.stopPropagation();
+      //   console.log('d is pressed...');
+      //   this.onChange('JANCSI');
+      //   this.$el.val('JANCSI');
+      // }
+
+      if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        event.stopPropagation();
+
+        console.log('arrow up');
+
+
+      }
+
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        event.stopPropagation();
+
+        console.log('arrow down');
+      }
+
+      const inputElement: HTMLInputElement = <HTMLInputElement>this.$el.get(0);
+      this.debugData.pos = inputElement.selectionStart;
+
+      if (event.key === 'ArrowLeft') {
+        this.sectionIndex--;
+        if (this.sectionIndex < 0) {
+          this.sectionIndex = 0;
+        }
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      if (event.key === 'ArrowRight') {
+        this.sectionIndex++;
+        if (this.sectionIndex > 2) {
+          this.sectionIndex = 2;
+        }
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      this.hiliteSection();
+
+      console.log('selection start: ', inputElement.selectionStart);
+
+    });
+  }
+
+  hiliteSection() {
+    const inputElement: HTMLInputElement = <HTMLInputElement>this.$el.get(0);
+    switch (this.sectionIndex) {
+      case 0:
+        inputElement.setSelectionRange(0, 2);
+        break;
+
+      case 1:
+        inputElement.setSelectionRange(3, 5);
+        break;
+
+      case 2:
+        inputElement.setSelectionRange(6, 10);
+        break;
+    }
   }
 
   writeValue(value: any): void { // writeValue — model -> view
@@ -50,7 +123,7 @@ export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAcces
     if (value instanceof Date) {
       this.inputElementRef.nativeElement.value = this.datePipe.transform(value, 'dd.MM.yyyy');
     } else {
-      this.inputElementRef.nativeElement.value = 'NOT datum';
+      this.inputElementRef.nativeElement.value = 'DD.MM.YYYY';
     }
 
   }
@@ -64,16 +137,21 @@ export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAcces
 
   }
 
+  toggleCalendar() {
+    this.calendarVisible = !this.calendarVisible;
+  }
 
-  // toggleCalendar() {
-  //   this.calendarVisible = !this.calendarVisible;
-  // }
+  valueChange(event) {
+    console.log('value change: ' + event.value);
+    // this.popover.visible = false;
+    this.calendarVisible = false;
+    const date = new Date(event.value);
 
-  // valueChange(event) {
-  //   console.log('value change: ' + event.value);
-  //   // this.popover.visible = false;
-  //   this.calendarVisible = false;
-  // }
+    const dateStr = this.datePipe.transform(date, 'dd.MM.yyyy');
+
+    this.$el.val(dateStr);
+    this.onChange(dateStr);
+  }
 
   // onKeyUp(event: KeyboardEvent) {
   //   console.log(event);
