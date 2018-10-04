@@ -17,6 +17,11 @@ import * as $ from 'jquery';
 export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 
   sectionIndex = 0;
+  dateParts: {dd: number, mm: number, yyyy: number} = {
+    dd: -1,
+    mm: -1,
+    yyyy: -1
+  };
   debugData = {
     pos: -1,
   };
@@ -30,7 +35,7 @@ export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAcces
   @ViewChild('inp') inputElementRef: ElementRef;
   @Input() idPrefix: string;
 
-  private onChange: (value: string) => void;
+  private onChange: (value: string | Date) => void;
 
   constructor() { }
 
@@ -62,7 +67,7 @@ export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAcces
 
         console.log('arrow up');
 
-
+        this.stepSection('up');
       }
 
       if (event.key === 'ArrowDown') {
@@ -70,6 +75,8 @@ export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAcces
         event.stopPropagation();
 
         console.log('arrow down');
+
+        this.stepSection('down');
       }
 
       const inputElement: HTMLInputElement = <HTMLInputElement>this.$el.get(0);
@@ -93,11 +100,79 @@ export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAcces
         event.stopPropagation();
       }
 
+      this.$el.val(this.getViewValue());
       this.hiliteSection();
+
 
       console.log('selection start: ', inputElement.selectionStart);
 
     });
+  }
+
+  stepSection(direction: 'up' | 'down') {
+    let step = 0;
+    if (direction === 'up') {
+      step = 1;
+    } else if (direction === 'down') {
+      step = -1;
+    }
+
+    switch (this.sectionIndex) {
+      case 0: // 'DD'
+        if (this.dateParts.dd === -1) {
+          this.dateParts.dd = 1;
+        } else if (Number.isInteger(this.dateParts.dd)) {
+          this.dateParts.dd += step;
+
+          if (this.dateParts.dd > 31) {
+            this.dateParts.dd = 1;
+          }
+          if (this.dateParts.dd === 0) {
+            this.dateParts.dd = 31;
+          }
+        }
+        break;
+
+      case 1: // 'MM'
+        if (this.dateParts.mm === -1) {
+          this.dateParts.mm = 1;
+        } else if (Number.isInteger(this.dateParts.mm)) {
+          this.dateParts.mm += step;
+
+          if (this.dateParts.mm > 12) {
+            this.dateParts.mm = 1;
+          }
+          if (this.dateParts.mm === 0) {
+            this.dateParts.mm = 12;
+          }
+
+        }
+        break;
+
+      case 2: // 'YYYY':
+        if (this.dateParts.yyyy === -1) {
+          this.dateParts.yyyy = (new Date()).getFullYear();
+        } else if (Number.isInteger(this.dateParts.yyyy)) {
+          this.dateParts.yyyy += step;
+        }
+        break;
+    }
+
+    if (
+      Number.isInteger(this.dateParts.dd) &&
+      Number.isInteger(this.dateParts.mm) &&
+      Number.isInteger(this.dateParts.yyyy)
+    ) {
+      // debugger;
+      const day = Number(this.dateParts.dd);
+      const month = Number(this.dateParts.mm) - 1;
+      const year = Number(this.dateParts.yyyy);
+      const date = new Date(year, month, day);
+      this.debugData.date = date;
+      this.onChange(date);
+    }
+
+    this.$el.val(this.getViewValue());
   }
 
   hiliteSection() {
@@ -117,13 +192,36 @@ export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAcces
     }
   }
 
+  private pad(number: number): string {
+    let num;
+    if (number <= 9) {
+      return '0' + number;
+    }
+
+    if (number <= 99) {
+      return number + '';
+    }
+
+    if (number <= 9999) {
+      num = ('000' + number).slice(-4);
+      return num + '';
+    }
+  }
+
+  getViewValue() {
+    const day = this.dateParts.dd === -1 ? 'DD' : this.pad(this.dateParts.dd);
+    const month = this.dateParts.mm === -1 ? 'MM' : this.pad(this.dateParts.mm);
+    const year = this.dateParts.yyyy === -1 ? 'YYYY' : this.pad(this.dateParts.yyyy);
+    return `${day}.${month}.${year}`;
+  }
+
   writeValue(value: any): void { // writeValue — model -> view
     console.log('writeValue[model->view]');
 
     if (value instanceof Date) {
       this.inputElementRef.nativeElement.value = this.datePipe.transform(value, 'dd.MM.yyyy');
     } else {
-      this.inputElementRef.nativeElement.value = 'DD.MM.YYYY';
+      this.inputElementRef.nativeElement.value = this.getViewValue();
     }
 
   }
