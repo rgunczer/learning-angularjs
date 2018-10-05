@@ -22,8 +22,9 @@ export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAcces
     mm: -1,
     yyyy: -1
   };
-  debugData = {
+  debugData: {pos: number, date: Date | string} = {
     pos: -1,
+    date: ''
   };
   calendarVisible = false;
   currentValue = new Date();
@@ -40,6 +41,17 @@ export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAcces
   constructor() { }
 
   ngOnInit() {
+  }
+
+  private getNumberFromInput(keyCode) {
+    let number = -1;
+    if (keyCode >= 48 && keyCode <= 57) {
+        number = keyCode - 48;
+    }
+    if (keyCode >= 96 && keyCode <= 105) {
+        number = keyCode - 96;
+    }
+    return number;
   }
 
   ngAfterViewInit() {
@@ -60,6 +72,14 @@ export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAcces
       //   this.onChange('JANCSI');
       //   this.$el.val('JANCSI');
       // }
+      const inputNumber = this.getNumberFromInput(event.keyCode);
+
+      if (inputNumber >= 0 && inputNumber <= 10) {
+        // handleNumericInput();
+        console.log('input number');
+        event.preventDefault();
+        return;
+      }
 
       if (event.key === 'ArrowUp') {
         event.preventDefault();
@@ -104,7 +124,12 @@ export class SimpleComponent implements OnInit, AfterViewInit, ControlValueAcces
       this.hiliteSection();
 
 
+
       console.log('selection start: ', inputElement.selectionStart);
+
+
+      event.preventDefault();
+      event.stopPropagation();
 
     });
   }
