@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
 import * as $ from 'jquery';
-import * as _ from 'lodash';
+
 import 'devextreme/integration/jquery';
 
 import { BurgerService } from './burger.service';
@@ -14,9 +14,10 @@ import { BurgerService } from './burger.service';
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'dxApp';
   games: any[];
-  buttons: any[];
+  bands: any[];
 
-  @ViewChild(DxDataGridComponent) gridGames: DxDataGridComponent;
+  @ViewChild('grdGames') gridGames: DxDataGridComponent;
+  @ViewChild('grdBands') gridBands: DxDataGridComponent;
 
   constructor(private burgerService: BurgerService) {}
 
@@ -39,23 +40,26 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     ];
 
-    this.buttons = [
+    this.bands = [
       {
-        text: 'menu 0',
-        show: true,
-        action: 'eat'
+        id: 1,
+        band: 'GNR',
+        singer: 'Axl'
       },
       {
-        text: 'menu 1',
-        show: true,
-        action: 'sleep'
+        id: 2,
+        band: 'MM',
+        singer: 'Manson'
       },
       {
-        text: 'menu 2',
-        show: true,
-        action: 'play'
+        id: 3,
+        band: 'REM',
+        singer: 'Michael'
       }
     ];
+
+    this.burgerService.addBurgerInfo(this.games);
+    this.burgerService.addBurgerInfo(this.bands);
   }
 
   ngAfterViewInit() {
@@ -64,16 +68,11 @@ export class AppComponent implements OnInit, AfterViewInit {
       {
         caption: 'burger',
         minWidth: 40,
-        cellTemplate: (container: any, options: any) => {
-          const id = _.uniqueId('burger-btn-');
-          $(`<div id="${id}">`).dxButton({
-            icon: 'menu',
-            onClick: (e: any) => {
-              this.burgerClick(id);
-              // this.burgerService.showBurgerMenu(id, options.data.name);
-            }
-          }).appendTo(container);
-        }
+        // cellTemplate: (container: any, options: any) => {
+        //   const burgerButton = this.burgerService.createButton(this, options.data.burger.rowId, 'burgClick');
+        //   burgerButton.appendTo(container);
+        // }
+        cellTemplate: this.burgerService.createButtonAlt(this, 'burgClick', 'something useful')
       },
       {
         dataField: 'id',
@@ -88,9 +87,60 @@ export class AppComponent implements OnInit, AfterViewInit {
         caption: 'DEV'
       }
     ];
+
+    this.gridBands.selection = { mode: 'none' };
+    this.gridBands.columns = [
+      {
+        caption: 'burger',
+        minWidth: 40,
+        // cellTemplate: (container: any, options: any) => {
+        //   const burgerButton = this.burgerService.createButton(this, options.data.burger.rowId, 'burgClick');
+        //   burgerButton.appendTo(container);
+        // }
+        cellTemplate: this.burgerService.createButtonAlt(this)
+      },
+      {
+        dataField: 'id',
+        caption: 'ID'
+      },
+      {
+        dataField: 'band',
+        caption: 'NAME'
+      },
+      {
+        dataField: 'singer',
+        caption: 'SNGR'
+      }
+    ];
   }
 
-  burgerClick(domId: string) {
+  burgClick(rowId: number, domId: string, additionalData: any) {
+    console.log(`burgClick: rowId:${rowId}, domId:${domId}, additionalData:${additionalData}`);
+    const row = [];
+
+    this.burgerService.showMenu({
+      domId: domId,
+      buttons: [
+        {
+          action: 'a1',
+          text: 'A1',
+          click: () => {
+            console.log('a1 click...');
+          }
+        },
+        {
+          action: 'a2',
+          text: 'A2',
+          click: () => {
+            console.log('a2 click...');
+          }
+        }
+      ]
+    });
+  }
+
+  burgerClick(rowId: number, domId: string) {
+    console.log(`burgerClick: rowId:${rowId}, domId:${domId}`);
     const row = [];
 
     this.burgerService.showMenu({
@@ -109,6 +159,13 @@ export class AppComponent implements OnInit, AfterViewInit {
             click: () => {
                 this.doActionTwo(row);
             }
+        },
+        {
+            action: 'actionThree',
+            text: 'Action Three',
+            click: () => {
+                this.doActionThree(row);
+            }
         }
       ]
     });
@@ -119,6 +176,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   doActionTwo(row?: any) {
+    alert('action two');
+  }
+
+  doActionThree(row?: any) {
     alert('action two');
   }
 
