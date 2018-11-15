@@ -10,7 +10,7 @@
 
 <hr>
 
-<dx-data-grid #grdGames id="gridContainer" [dataSource]="games"></dx-data-grid>
+<dx-data-grid #grdGames id="gridContainer" [dataSource]="files"></dx-data-grid>
 
 <hr>
 
@@ -19,3 +19,10 @@
 <hr>
 
 <app-burger></app-burger>
+
+<hr>
+
+<div id="wrapper">
+  <dx-pie-chart id="left" #one [dataSource]="conversionOne"></dx-pie-chart>
+  <dx-pie-chart id="right" #two [dataSource]="conversionTwo"></dx-pie-chart>
+</div>

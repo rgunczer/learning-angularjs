@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { DxButtonModule, DxDataGridModule } from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule, DxPieChartModule } from 'devextreme-angular';
 
 import { AppComponent } from './app.component';
 import { BurgerComponent } from './burger/burger.component';
@@ -18,7 +18,8 @@ console.log('jQuery version: ' + $.fn.jquery);
   imports: [
     BrowserModule,
     DxButtonModule,
-    DxDataGridModule
+    DxDataGridModule,
+    DxPieChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

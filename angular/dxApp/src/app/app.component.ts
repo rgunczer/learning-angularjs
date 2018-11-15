@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { DxDataGridComponent } from 'devextreme-angular';
+import { DxDataGridComponent, DxPieChartComponent } from 'devextreme-angular';
 import * as $ from 'jquery';
 
 import 'devextreme/integration/jquery';
@@ -13,30 +13,35 @@ import { BurgerService } from './burger.service';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'dxApp';
-  games: any[];
+  files: any[];
   bands: any[];
+  conversionOne: any[];
+  conversionTwo: any[];
 
   @ViewChild('grdGames') gridGames: DxDataGridComponent;
   @ViewChild('grdBands') gridBands: DxDataGridComponent;
+  // @ViewChild(DxPieChartComponent) pieChart: DxPieChartComponent;
+  @ViewChild('one') pieChartOne: DxPieChartComponent;
+  @ViewChild('two') pieChartTwo: DxPieChartComponent;
 
-  constructor(private burgerService: BurgerService) {}
+  constructor(private burgerService: BurgerService) { }
 
   ngOnInit() {
-    this.games = [
+    this.files = [
       {
-        id: 1,
-        name: 'TLOU',
-        developer: 'Naughty Dog'
+        path: 'c:\\src\\app\\apple.js',
+        fileName: 'apple.js',
+        converted: true
       },
       {
-        id: 2,
-        name: 'HZD',
-        developer: 'Guerilla'
+        path: 'c:\\src\\app\\oracle.js',
+        fileName: 'oracle.js',
+        converted: true
       },
       {
-        id: 3,
-        name: 'AC',
-        developer: 'Ubisoft'
+        path: 'c:\\src\\app\\pie.js',
+        fileName: 'pie.js',
+        converted: true
       }
     ];
 
@@ -58,33 +63,100 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     ];
 
-    this.burgerService.addBurgerInfo(this.games);
+    this.conversionOne = [
+      { name: 'AngularJS', value: 0.82 },
+      { name: 'Angular', value: 0.18 }
+    ];
+
+    this.conversionTwo = [
+      { name: 'AngularJS', value: 0.37 },
+      { name: 'Angular', value: 0.63 }
+    ];
+
+    // this.burgerService.addBurgerInfo(this.games);
     this.burgerService.addBurgerInfo(this.bands);
   }
 
   ngAfterViewInit() {
-    this.gridGames.selection = { mode: 'none' };
-    this.gridGames.columns = [
-      {
-        caption: 'burger',
-        minWidth: 40,
-        // cellTemplate: (container: any, options: any) => {
-        //   const burgerButton = this.burgerService.createButton(this, options.data.burger.rowId, 'burgClick');
-        //   burgerButton.appendTo(container);
-        // }
-        cellTemplate: this.burgerService.createButtonAlt(this, 'burgClick', 'something useful')
+
+    this.pieChartOne.title = 'Naughty Dog';
+
+    this.pieChartOne.animation = {
+      easing: 'linear',
+      duration: 1000
+    };
+
+    this.pieChartOne.commonSeriesSettings = {
+      argumentFieldName: 'name'
+    };
+
+    this.pieChartOne.series = {
+      argumentField: 'name',
+      argumentType: 'numerice',
+      valueField: 'value',
+      label: {
+        visible: true,
+        format: 'percent'
       },
+      hoverMode: 'none'
+    };
+
+    this.pieChartOne.palette = 'Soft Pastel'; // ['gray', 'blue'];
+
+
+
+
+    this.pieChartTwo.title = 'Rockstar';
+
+    this.pieChartTwo.animation = {
+      easing: 'easeOutCubic',
+      duration: 3000
+    };
+
+    this.pieChartTwo.commonSeriesSettings = {
+      argumentFieldName: 'name'
+    };
+
+    this.pieChartTwo.series = {
+      argumentField: 'name',
+      argumentType: 'numerice',
+      valueField: 'value',
+      label: {
+        visible: true,
+        format: 'percent'
+      },
+      hoverMode: 'none'
+    };
+
+    this.pieChartTwo.palette = 'Soft Pastel'; // ['gray', 'blue'];
+
+
+
+    this.gridGames.selection = { mode: 'none' };
+    this.gridGames.filterRow = {
+      visible: true
+    };
+    this.gridGames.columns = [
+      // {
+      //   caption: 'burger',
+      //   minWidth: 40,
+      //   // cellTemplate: (container: any, options: any) => {
+      //   //   const burgerButton = this.burgerService.createButton(this, options.data.burger.rowId, 'burgClick');
+      //   //   burgerButton.appendTo(container);
+      //   // }
+      //   cellTemplate: this.burgerService.createButtonAlt(this, 'burgClick', 'something useful')
+      // },
       {
-        dataField: 'id',
+        dataField: 'path',
         caption: 'ID'
       },
       {
-        dataField: 'name',
+        dataField: 'fileName',
         caption: 'NAME'
       },
       {
-        dataField: 'developer',
-        caption: 'DEV'
+        dataField: 'converted',
+        caption: 'CONVERTED ?'
       }
     ];
 
@@ -147,25 +219,25 @@ export class AppComponent implements OnInit, AfterViewInit {
       domId: domId,
       buttons: [
         {
-            action: 'actionOne',
-            text: 'Action One',
-            click: () => {
-                this.doActionOne(row);
-            }
+          action: 'actionOne',
+          text: 'Action One',
+          click: () => {
+            this.doActionOne(row);
+          }
         },
         {
-            action: 'actionTwo',
-            text: 'Action Two',
-            click: () => {
-                this.doActionTwo(row);
-            }
+          action: 'actionTwo',
+          text: 'Action Two',
+          click: () => {
+            this.doActionTwo(row);
+          }
         },
         {
-            action: 'actionThree',
-            text: 'Action Three',
-            click: () => {
-                this.doActionThree(row);
-            }
+          action: 'actionThree',
+          text: 'Action Three',
+          click: () => {
+            this.doActionThree(row);
+          }
         }
       ]
     });
