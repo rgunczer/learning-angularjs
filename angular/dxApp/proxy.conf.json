@@ -1,0 +1,12 @@
+{
+    "/getdata/*": {
+        "target": "http://localhost:63556/home/getdata",
+        "secure": false,
+        "logLevel": "debug"
+    },
+    "/updateconverted/*": {
+        "target": "http://localhost:63556/home/updateconverted",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

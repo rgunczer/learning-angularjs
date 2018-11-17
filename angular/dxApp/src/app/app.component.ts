@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+
 import { DxDataGridComponent, DxPieChartComponent } from 'devextreme-angular';
 import * as $ from 'jquery';
 
@@ -13,12 +14,12 @@ import { BurgerService } from './burger.service';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'dxApp';
-  files: any[];
+
   bands: any[];
   conversionOne: any[];
   conversionTwo: any[];
 
-  @ViewChild('grdGames') gridGames: DxDataGridComponent;
+
   @ViewChild('grdBands') gridBands: DxDataGridComponent;
   // @ViewChild(DxPieChartComponent) pieChart: DxPieChartComponent;
   @ViewChild('one') pieChartOne: DxPieChartComponent;
@@ -27,23 +28,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private burgerService: BurgerService) { }
 
   ngOnInit() {
-    this.files = [
-      {
-        path: 'c:\\src\\app\\apple.js',
-        fileName: 'apple.js',
-        converted: true
-      },
-      {
-        path: 'c:\\src\\app\\oracle.js',
-        fileName: 'oracle.js',
-        converted: true
-      },
-      {
-        path: 'c:\\src\\app\\pie.js',
-        fileName: 'pie.js',
-        converted: true
-      }
-    ];
 
     this.bands = [
       {
@@ -63,11 +47,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     ];
 
-    this.conversionOne = [
-      { name: 'AngularJS', value: 0.82 },
-      { name: 'Angular', value: 0.18 }
-    ];
-
     this.conversionTwo = [
       { name: 'AngularJS', value: 0.37 },
       { name: 'Angular', value: 0.63 }
@@ -78,66 +57,35 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    // this.pieChartTwo.title = 'Rockstar';
 
-    this.pieChartOne.title = 'Naughty Dog';
+    // this.pieChartTwo.animation = {
+    //   easing: 'easeOutCubic',
+    //   duration: 3000
+    // };
 
-    this.pieChartOne.animation = {
-      easing: 'linear',
-      duration: 1000
-    };
+    // this.pieChartTwo.commonSeriesSettings = {
+    //   argumentFieldName: 'name'
+    // };
 
-    this.pieChartOne.commonSeriesSettings = {
-      argumentFieldName: 'name'
-    };
+    // this.pieChartTwo.series = {
+    //   argumentField: 'name',
+    //   argumentType: 'numerice',
+    //   valueField: 'value',
+    //   label: {
+    //     visible: true,
+    //     format: 'percent'
+    //   },
+    //   hoverMode: 'none'
+    // };
 
-    this.pieChartOne.series = {
-      argumentField: 'name',
-      argumentType: 'numerice',
-      valueField: 'value',
-      label: {
-        visible: true,
-        format: 'percent'
-      },
-      hoverMode: 'none'
-    };
-
-    this.pieChartOne.palette = 'Soft Pastel'; // ['gray', 'blue'];
-
+    // this.pieChartTwo.palette = 'Soft Pastel'; // ['gray', 'blue'];
 
 
 
-    this.pieChartTwo.title = 'Rockstar';
-
-    this.pieChartTwo.animation = {
-      easing: 'easeOutCubic',
-      duration: 3000
-    };
-
-    this.pieChartTwo.commonSeriesSettings = {
-      argumentFieldName: 'name'
-    };
-
-    this.pieChartTwo.series = {
-      argumentField: 'name',
-      argumentType: 'numerice',
-      valueField: 'value',
-      label: {
-        visible: true,
-        format: 'percent'
-      },
-      hoverMode: 'none'
-    };
-
-    this.pieChartTwo.palette = 'Soft Pastel'; // ['gray', 'blue'];
-
-
-
-    this.gridGames.selection = { mode: 'none' };
-    this.gridGames.filterRow = {
-      visible: true
-    };
-    this.gridGames.columns = [
-      // {
+    // this.gridBands.selection = { mode: 'none' };
+    // this.gridBands.columns = [
+            // {
       //   caption: 'burger',
       //   minWidth: 40,
       //   // cellTemplate: (container: any, options: any) => {
@@ -146,44 +94,33 @@ export class AppComponent implements OnInit, AfterViewInit {
       //   // }
       //   cellTemplate: this.burgerService.createButtonAlt(this, 'burgClick', 'something useful')
       // },
-      {
-        dataField: 'path',
-        caption: 'ID'
-      },
-      {
-        dataField: 'fileName',
-        caption: 'NAME'
-      },
-      {
-        dataField: 'converted',
-        caption: 'CONVERTED ?'
-      }
-    ];
 
-    this.gridBands.selection = { mode: 'none' };
-    this.gridBands.columns = [
-      {
-        caption: 'burger',
-        minWidth: 40,
-        // cellTemplate: (container: any, options: any) => {
-        //   const burgerButton = this.burgerService.createButton(this, options.data.burger.rowId, 'burgClick');
-        //   burgerButton.appendTo(container);
-        // }
-        cellTemplate: this.burgerService.createButtonAlt(this)
-      },
-      {
-        dataField: 'id',
-        caption: 'ID'
-      },
-      {
-        dataField: 'band',
-        caption: 'NAME'
-      },
-      {
-        dataField: 'singer',
-        caption: 'SNGR'
-      }
-    ];
+    //   {
+    //     caption: 'burger',
+    //     minWidth: 40,
+    //     // cellTemplate: (container: any, options: any) => {
+    //     //   const burgerButton = this.burgerService.createButton(this, options.data.burger.rowId, 'burgClick');
+    //     //   burgerButton.appendTo(container);
+    //     // }
+    //     cellTemplate: this.burgerService.createButtonAlt(this)
+    //   },
+    //   {
+    //     dataField: 'id',
+    //     caption: 'ID'
+    //   },
+    //   {
+    //     dataField: 'band',
+    //     caption: 'NAME'
+    //   },
+    //   {
+    //     dataField: 'singer',
+    //     caption: 'SNGR'
+    //   }
+    // ];
+  }
+
+  overwriteData() {
+    // this.files[0].LineCount = 999;
   }
 
   burgClick(rowId: number, domId: string, additionalData: any) {
