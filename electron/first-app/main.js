@@ -1,13 +1,14 @@
 const { app, BrowserWindow } = require('electron');
 
 app.on('ready', () => {
-    win = new BrowserWindow({width: 800, height: 800, show: false});
-    win.loadFile('index.html');
 
-    win.webContents.openDevTools(); // open dev tools
+    const mainWindow = new BrowserWindow({width: 800, height: 600, show: false});
+    mainWindow.loadFile('index.html');
 
-    win.once('ready-to-show', () => {
-        win.show();
+    mainWindow.webContents.openDevTools(); // open dev tools
+
+    mainWindow.once('ready-to-show', () => {
+        mainWindow.show();
     });
 
 });
