@@ -6,10 +6,10 @@ const button = document.querySelector("#selectBtn");
 //     alert('test');
 // });
 
-button.addEventListener('click', function (event) {
+button.addEventListener('click', (event) => {
     dialog.showOpenDialog({
         properties: ['openFile', 'multiSelections']
-    }, function (files) {
+    }, (files) => {
         if (files !== undefined) {
             console.log(files);
         }
