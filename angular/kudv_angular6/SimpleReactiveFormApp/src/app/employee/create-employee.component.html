@@ -41,7 +41,7 @@
           <label class="col-md-2 control-label">Proficiency</label>
           <div class="col-md-8">
             <label class="radio-inline">
-              <input id="proficiency" type="radio" value="beeginner" formControlName="proficiency">Beginner
+              <input id="proficiency" type="radio" value="beginner" formControlName="proficiency">Beginner
             </label>
             <label class="radio-inline">
               <input id="proficiency" type="radio" value="intermediate" formControlName="proficiency">Intermediate
@@ -57,7 +57,10 @@
     </div>
 
     <div class="panel-footer">
-      <button class="btn btn-primary" type="submit">Save</button>
+      <div class="btn-toolbar">
+        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-primary" type="button" (click)="onLoadData()">Load Data</button>
+      </div>
     </div>
 
   </div>
@@ -84,3 +87,7 @@
     </td>
   </tr>
 </table>
+
+<svg>
+  <circle cx="160" cy="60" r="30" stroke="blue" stroke-width="1" fill="yellow"/>
+</svg>
