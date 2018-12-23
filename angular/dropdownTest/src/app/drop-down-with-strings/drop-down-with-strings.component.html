@@ -1,0 +1,4 @@
+<select [(ngModel)]="selectedFruit" (change)="onSelectionChanged($event.target.value)">
+    <option *ngFor="let fruit of fruits" [value]="fruit">{{fruit}}</option>
+</select>
+Selected: [{{ selectedFruit }}]

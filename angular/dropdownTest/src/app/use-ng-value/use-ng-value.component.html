@@ -1,0 +1,4 @@
+<select [(ngModel)]="selectedGame">
+    <option *ngFor="let game of games" [ngValue]="game">{{game.title}}</option>
+</select>
+Selected Game: [{{ toString(selectedGame) }}]

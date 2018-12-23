@@ -1,0 +1,4 @@
+<select [(ngModel)]="selectedDType" (change)="onSelectionChanged($event.target.value)">
+    <option *ngFor="let item of DTypes" [value]="item.Key">{{item.Value}}</option>
+</select>
+Selected key: [{{ selectedDType }}]
