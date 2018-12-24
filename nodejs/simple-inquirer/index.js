@@ -27,10 +27,12 @@ var questions = [
         message: 'Select Support',
         choices: [
             {
-                name: 'Grid'
+                name: 'DxDataGrid',
+                value: 'grid'
             },
             {
-                name: 'Modal'
+                name: 'Modal Wrapper',
+                value: 'modal'
             },
             new inquirer.Separator(' ---- '),
             {
