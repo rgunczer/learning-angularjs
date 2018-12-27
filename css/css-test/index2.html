@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document 2</title>
+    <style>
+        html {
+            font-size: 100%;
+        }
+        body {
+            background: lightgray;
+        }
+
+        .my-toggle {
+            display: inline-block;
+            background: gray;
+            /* margin: 1rem; */
+            position: relative;
+            display: inline-block;
+            width: 2rem;
+            height: 1.25rem;
+        }
+        .my-toggle input[type="checkbox"] {
+            display: none;
+            /* display: inline-block;
+            position: absolute;
+            left: 100px; */
+        }
+        .my-toggle__slider {
+            background-color: orange;
+            border-radius: 1rem;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: 1s;
+        }
+        .my-toggle__slider:before {
+            border-radius: 50%;
+            content: "";
+            position: absolute;
+            height: 1rem;
+            width: 1rem;
+            left: 2px;
+            bottom: 2px;
+            transition: 1s;
+            background-color: red;
+        }
+        .my-toggle input[type="checkbox"]:checked + .my-toggle__slider {
+            background-color: yellow;
+        }
+        .my-toggle input[type="checkbox"]:checked + .my-toggle__slider:before {
+            transform: translateX(12px);
+            transform: translateX(0.75rem);
+        }
+        .my-toggle__text {
+            display: inline-block;
+            /* position: relative; */
+            /* padding: 2rem; */
+        }
+    </style>
+</head>
+
+<body>
+
+    <label class="my-toggle">
+        <input type="checkbox">
+        <div class="my-toggle__slider"></div>
+        <div class="my-toggle__text">Random text</div>
+    </label>
+
+</body>
+
+</html>
