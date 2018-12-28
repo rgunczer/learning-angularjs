@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const { body, validationResult } = require('express-validator/check');
 
 const Registration = mongoose.model('Registration');
+const Games = mongoose.model('Games');
 
 const basic = auth.basic({
     file: path.join(__dirname, '../users.htpasswd')
@@ -50,6 +51,14 @@ router.get('/registrations', auth.connect(basic), (req, res) => {
     Registration.find()
         .then((registrations) => {
             res.render('index', { title: 'Listing registrations', registrations });
+        })
+        .catch(() => { res.send('Sorry! Something went wrong.'); });
+});
+
+router.get('/games', auth.connect(basic), (req, res) => {
+    Games.find()
+        .then((games) => {
+            res.render('games', { title: 'Listing games', games });
         })
         .catch(() => { res.send('Sorry! Something went wrong.'); });
 });

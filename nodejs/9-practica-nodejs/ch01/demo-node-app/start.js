@@ -1,4 +1,5 @@
 require('./models/Registration');
+require('./models/Games');
 const app = require('./app');
 require('dotenv').config();
 
