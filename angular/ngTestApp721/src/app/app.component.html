@@ -1,0 +1,7 @@
+<form (ngSubmit)="onSubmit(frm)" #frm="ngForm">
+    Title: <input type="text" name="title" ngModel>
+    <br>
+    Amount: <input type="text" autocomplete="off" name="amount" appMask ngModel>
+    <br>
+    <button type="submit">Submit</button>
+</form>
