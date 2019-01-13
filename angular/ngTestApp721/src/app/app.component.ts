@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ngTestApp721';
+  title = '';
 
   onSubmit(form: NgForm) {
     console.log(form);

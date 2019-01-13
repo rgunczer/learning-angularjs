@@ -4,13 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MaskDirective } from './mask.directive';
+import { FormValidationMessagesComponent } from './form-validation-messages/form-validation-messages.component';
 
 console.log(VERSION.full);
 
 @NgModule({
   declarations: [
     AppComponent,
-    MaskDirective
+    MaskDirective,
+    FormValidationMessagesComponent
   ],
   imports: [
     BrowserModule,

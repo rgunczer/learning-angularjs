@@ -1,6 +1,15 @@
 <form (ngSubmit)="onSubmit(frm)" #frm="ngForm">
-    Title: <input type="text" name="title" ngModel>
+    Title: <input type="text" autocomplete="off" name="title" [(ngModel)]="title" #tit="ngModel" required minlength="2">
     <br>
+    <app-form-validation-messages [elem]="tit" minLength="2"></app-form-validation-messages>
+    <!-- <div *ngIf="tit.invalid && (tit.dirty || tit.touched)">
+        <div class="help-block" *ngIf="tit.errors.required">
+            Field is required
+        </div>
+        <div class="help-block" *ngIf="tit.errors.minlength">
+            Name must be at least 3 char long.
+        </div>
+    </div> -->
     Amount: <input type="text" autocomplete="off" name="amount" appMask ngModel>
     <br>
     <button type="submit">Submit</button>
