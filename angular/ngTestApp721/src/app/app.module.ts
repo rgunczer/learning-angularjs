@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MaskDirective } from './mask.directive';
 import { FormValidationMessagesComponent } from './form-validation-messages/form-validation-messages.component';
+import { SampleFormComponent } from './sample-form/sample-form.component';
+import { HoverButtonDirective } from './hover-button.directive';
 
 console.log(VERSION.full);
 
@@ -12,7 +14,9 @@ console.log(VERSION.full);
   declarations: [
     AppComponent,
     MaskDirective,
-    FormValidationMessagesComponent
+    FormValidationMessagesComponent,
+    SampleFormComponent,
+    HoverButtonDirective
   ],
   imports: [
     BrowserModule,

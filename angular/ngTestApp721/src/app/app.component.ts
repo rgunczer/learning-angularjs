@@ -8,8 +8,4 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   title = '';
-
-  onSubmit(form: NgForm) {
-    console.log(form);
-  }
 }

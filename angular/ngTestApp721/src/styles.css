@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+.hover-button-container:hover > i.hover-button {
+    visibility: inherit;
+}
+
+.hover-button-container:hover > [appHoverButton] {
+    padding-left: 26px;
+}
+
+i.hover-button {
+    visibility: hidden;
+    position: absolute;
+    font-size: 2rem;
+    cursor: pointer;
+}
