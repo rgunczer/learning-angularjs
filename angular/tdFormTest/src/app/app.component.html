@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit(frm)" #frm="ngForm">
+  Email:<input type="radio" name="contactPreference" value="email" #contpref="ngModel" ngModel>
+  Phone:<input type="radio" name="contactPreference" value="phone" #contpref="ngModel" ngModel>
+  <input type="text" name="userName" ngModel required minlength="3" maxlength="6">
+  <input type="number" name="age" ngModel [required]="contpref.value === 'email'">
+  <button type="submit">Submit</button>
+</form>
+<hr>
+userName: {{ frm.controls.userName?.errors | json }}
+age: {{ frm.controls.age?.errors | json }}
+<hr>
+{{ contpref.value }}
+<!-- {{ frm.controls | json }} -->
