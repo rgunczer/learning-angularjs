@@ -8,8 +8,14 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   title = 'tdFormTest';
+  firstName = '';
 
   onSubmit(form: NgForm) {
     console.log(form);
   }
+
+  onSetFirstNameLongText() {
+    this.firstName = 'appleapple';
+  }
+
 }
