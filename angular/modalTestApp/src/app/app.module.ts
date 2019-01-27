@@ -3,17 +3,25 @@ import { NgModule } from '@angular/core';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+import { DxButtonModule, DxDataGridModule } from 'devextreme-angular';
+
 import { AppComponent } from './app.component';
 import { MyModalComponent } from './my-modal/my-modal.component';
+import { MyContentComponent } from './my-content/my-content.component';
+import { MyGridContentComponent } from './my-grid-content/my-grid-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyModalComponent
+    MyModalComponent,
+    MyContentComponent,
+    MyGridContentComponent
   ],
   imports: [
     BrowserModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    DxButtonModule,
+    DxDataGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]
