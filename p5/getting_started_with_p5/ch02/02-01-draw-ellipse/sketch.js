@@ -1,5 +1,5 @@
 function setup() {
-
+    // default canvas size is 100x100
 }
 
 function draw() {
