@@ -1,5 +1,7 @@
 const w = 800;
 const h = 200;
+let ypos = 0;
+let xx = 0;
 
 let divider = 10;
 let amplitude = 30;
@@ -23,11 +25,18 @@ function draw() {
     stroke(0);
     while(x < w) {
         point(x, y);
-        //  // sin() returns number between -1 and 1
         let sinx = sin(x/divider);
-        // console.log(sinx);
         point(x, y + sinx * amplitude)
+
+        if (xx === x) {
+            ypos = y + sinx * amplitude;
+        }
         x++;
     }
 
+    ellipse(100, ypos, 10, 10)
+    ++xx;
+    if (xx > w) {
+        xx = 0;
+    }
 }
