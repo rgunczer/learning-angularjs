@@ -7,10 +7,17 @@ console.log('swagger parser test');
 const lines = [];
 const fileName = 'OrganizationManagementAPI';
 const pathToSourceApi = path.join(__dirname, 'api', fileName) + '.yml';
-const pathToDestTs = path.join(__dirname, 'dest', fileName) + '.model.ts';
+const pathToDestTs = path.join(__dirname, 'dest', fileName) + '.modelY.ts';
 
 let parser = new SwaggerParser();
-parser.validate(pathToSourceApi)
+parser.validate(pathToSourceApi, {
+    validate: {
+        spec: false
+    },
+    resolve: {
+        external: false
+    }
+})
     .then(api => {
         console.log("API name: %s, Version: %s", api.info.title, api.info.version);
 
@@ -20,11 +27,16 @@ parser.validate(pathToSourceApi)
         lines.push('');
 
         Object.entries(api.components.schemas).forEach(([key, value]) => {
-            // console.log(`${key}\n\n ${JSON.stringify(value, null, 2)}\n\n`);
-            lines.push(`export interface ${key} {`);
-            extractProps(value);
-            lines.push('}');
-            lines.push('');
+            lines.push(`${key}\n\n ${JSON.stringify(value, null, 2)}\n\n`);
+
+            // if (key.trim() === 'HALOrganizationLinks') {
+            //     debugger;
+            // }
+
+            // lines.push(`export interface ${key} {`);
+            // extractProps(value);
+            // lines.push('}');
+            // lines.push('');
         });
         writeOutputTS();
     })
@@ -58,8 +70,12 @@ function extractProps(obj, indent = '') {
     if (obj.properties) {
         Object.entries(obj.properties).forEach(([key, value]) => {
             if (value.type === 'object') {
-                lines.push(`  ${key}: {`);
+                lines.push(`  ${key}${calcRequiredIndicator(obj.required, key)}: {`);
                 extractProps(value, '  ');
+                lines.push(`  },`);
+            } else if (value.allOf) {
+                lines.push(`  ${indent}${key}${calcRequiredIndicator(obj.required, key)}: {`);
+                getAllOfArrayValues(value.allOf);
                 lines.push(`  },`);
             } else {
                 lines.push(`  ${indent}${key}${calcRequiredIndicator(obj.required, key)}: ${getTsType(value.type)};`);
@@ -74,11 +90,19 @@ function extractProps(obj, indent = '') {
     }
 }
 
+function getAllOfArrayValues(arr) {
+
+    arr.forEach(allOfItem => {
+        extractProps(allOfItem, '  ');
+    });
+
+}
+
 function writeOutputTS() {
     fs.writeFile(pathToDestTs, lines.join('\n'), (err) => {
         if (err) {
             return console.log(err);
         }
-        console.log('Wrote file');
+        console.log(`Wrote file: [${pathToDestTs}]`);
     });
 }
