@@ -26,4 +26,12 @@ function ex02() {
     return patterns.map(pattern => pattern.test(str));
 }
 
-console.log(ex02());
+// const hasUntilDestroy = /import\s*{\s*[^}]*untilDestroyed[^}]*}\s*from\s*("|')ngx-take-until-destroy\1(?=[^]*untilDestroyed\(\w*\)[^]*)/;
+function ex03() {
+    var str = `import  {   untilDestroyed  }  from "ngx-take-until-destroy"`;
+    var patt1 = /import\s*{\s*untilDestroyed\s*}\s*from\s*('|")/;
+    var result = str.match(patt1);
+    return result;
+}
+
+console.log(ex03());

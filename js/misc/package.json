@@ -1,0 +1,16 @@
+{
+  "name": "misc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "duplicate-reverse.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^7.1.6",
+    "ora": "^4.0.2"
+  }
+}
