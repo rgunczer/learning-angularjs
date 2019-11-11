@@ -34,4 +34,20 @@ function ex03() {
     return result;
 }
 
-console.log(ex03());
+function ex04() {
+    const testArray = [
+        `import { Observable } from 'rxjs';`,
+        `import  {   Observable   }   from   'rxjs' ;   `,
+        `import  {   Observable   }   from   'rxjs'`
+    ];
+    var pattern = /import\s*{\s*Observable\s*}\s*from\s*('|")rxjs\1\s*;?\s*/;
+
+    var result = testArray.filter(str =>  str.match(pattern));
+
+    return {
+        result,
+        same: result.length === testArray.length
+    };
+}
+
+console.log(JSON.stringify(ex04(), null, 2));
