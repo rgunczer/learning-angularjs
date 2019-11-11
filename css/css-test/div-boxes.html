@@ -13,16 +13,6 @@
             font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
-        .box {
-            background-color: yellow;
-            border: 0px solid black;
-            width: 200px;
-            height: 200px;
-            margin: 10px;
-            display: inline-block;
-            box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.4);
-        }
-
         #menu {
             display: inline-block;
             width: 100%;
@@ -33,9 +23,35 @@
             padding: 0px;
         }
 
-        .inner {
-            background-color: burlywood;
+        .box {
+            background-color: yellow;
+            border: 0px solid black;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            display: inline-block;
+            box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        .box:hover {
+            background-color: orange;
+        }
+
+        .box-title {
+            background-color: chocolate;
             text-align: center;
+            color: white;
+        }
+
+        .box-content {
+            display: flex;
+            /* background-color: blue; */
+            padding: 4px;
+            text-align: center;
+            color: gray;
+            justify-content: center;
+            align-items: center;
+            height: 172px;
         }
     </style>
 </head>
@@ -45,28 +61,36 @@
         <div>Some Company Name</div>
     </div>
     <div class="box">
-        <div class="inner">Apple</div>
+        <div class="box-title">Apple</div>
+        <div class="box-content">Some random text goes here</div>
     </div>
     <div class="box">
-        <div class="inner">Orange</div>
+        <div class="box-title">Orange</div>
+        <div class="box-content">Some random text goes here</div>
     </div>
     <div class="box">
-        <div class="inner">Kiwi</div>
+        <div class="box-title">Kiwi</div>
+        <div class="box-content">Some random text goes here</div>
     </div>
     <div class="box">
-        <div class="inner">Banana</div>
+        <div class="box-title">Banana</div>
+        <div class="box-content">Some random text goes here</div>
     </div>
     <div class="box">
-        <div class="inner">Melon</div>
+        <div class="box-title">Melon</div>
+        <div class="box-content">Some random text goes here</div>
     </div>
     <div class="box">
-        <div class="inner">Lemon</div>
+        <div class="box-title">Lemon</div>
+        <div class="box-content">Some random and different text goes here</div>
     </div>
     <div class="box">
-        <div class="inner">Strawberry</div>
+        <div class="box-title">Strawberry</div>
+        <div class="box-content">Some random text goes here</div>
     </div>
     <div class="box">
-        <div class="inner">Mango</div>
+        <div class="box-title">Mango</div>
+        <div class="box-content">Some random text goes here</div>
     </div>
 </body>
 
