@@ -1,7 +1,0 @@
-
-npm install -g tslint
-
-npm install -g typescript
-
-
-tsc --sourceMap true app.ts
